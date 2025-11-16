@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply font-body bg-slate-950 text-slate-100;
+}
+
+.glass-panel {
+  @apply bg-slate-900/60 border border-slate-700/60 backdrop-blur-xl;
+}
+
+.section-shell {
+  @apply max-w-6xl mx-auto px-4 sm:px-6 md:px-8;
+}
+
+.tag-pill {
+  @apply inline-flex items-center rounded-full border border-slate-600/60 bg-slate-900/70 px-2.5 py-1 text-[0.7rem] font-medium text-slate-200 gap-1;
+}
+
+.tag-dot {
+  @apply h-1.5 w-1.5 rounded-full bg-accent-500;
+}
+
+/* Simple fade-in animation for sections */
+.fade-in {
+  animation: fadeInUp 0.9s ease-out both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
