@@ -1,4 +1,5 @@
 import React from "react";
+import pfp from "../../assets/pfp.jpeg";
 
 const links = [
   { id: "about", label: "About" },
@@ -20,8 +21,23 @@ export function Navbar() {
           onClick={() => handleScroll("hero")}
           className="group flex items-center gap-3 text-sm font-semibold tracking-tight text-slate-50 transition-all duration-300 md:hover:scale-105"
         >
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-cyan-500 text-base font-bold shadow-glow transition-all duration-300 md:group-hover:shadow-[0_0_25px_rgba(56,189,248,0.6)] md:group-hover:rotate-12">
-            <img src="assets/pfp.jpeg" alt="MJ" className="h-10 w-10 rounded-full object-cover" />
+          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-cyan-500 text-base font-bold shadow-glow transition-all duration-300 md:group-hover:shadow-[0_0_25px_rgba(56,189,248,0.6)] md:group-hover:rotate-12 overflow-hidden">
+            <img
+              src={pfp}
+              alt="MJ"
+              className="h-10 w-10 rounded-full object-cover"
+              onError={(e) => {
+                // Fallback: show initials if image fails on production
+                const parent = e.currentTarget.parentElement;
+                if (parent && !parent.querySelector(".pfp-fallback")) {
+                  e.currentTarget.style.display = "none";
+                  const fb = document.createElement("span");
+                  fb.textContent = "MJ";
+                  fb.className = "pfp-fallback text-slate-900 font-bold";
+                  parent.appendChild(fb);
+                }
+              }}
+            />
           </span>
           <span className="text-xl font-bold sm:text-2xl bg-gradient-to-r from-slate-50 to-sky-200 bg-clip-text text-transparent">Mayank Jain</span>
         </button>
