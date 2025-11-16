@@ -14,16 +14,16 @@ export function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-xl transition-all duration-300">
       <nav className="section-shell flex h-16 items-center justify-between gap-4">
         <button
           onClick={() => handleScroll("hero")}
-          className="flex items-center gap-3 text-sm font-semibold tracking-tight text-slate-50"
+          className="group flex items-center gap-3 text-sm font-semibold tracking-tight text-slate-50 transition-all duration-300 hover:scale-105"
         >
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-cyan-500 text-base font-bold shadow-glow">
+          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-cyan-500 text-base font-bold shadow-glow transition-all duration-300 group-hover:shadow-[0_0_25px_rgba(56,189,248,0.6)] group-hover:rotate-12">
             MJ
           </span>
-          <span className="text-xl font-bold sm:text-2xl">Mayank Jain</span>
+          <span className="text-xl font-bold sm:text-2xl bg-gradient-to-r from-slate-50 to-sky-200 bg-clip-text text-transparent">Mayank Jain</span>
         </button>
 
         <div className="flex items-center gap-2 sm:gap-4">
@@ -32,7 +32,7 @@ export function Navbar() {
               <button
                 key={link.id}
                 onClick={() => handleScroll(link.id)}
-                className="rounded-full px-3 py-1 transition-colors hover:bg-slate-800/80 hover:text-slate-50"
+                className="rounded-full px-3 py-1 transition-all duration-300 hover:bg-slate-800/80 hover:text-slate-50 hover:scale-110 hover:-translate-y-0.5"
               >
                 {link.label}
               </button>
@@ -42,7 +42,7 @@ export function Navbar() {
             href="https://github.com/mayank-jain632"
             target="_blank"
             rel="noreferrer"
-            className="hidden sm:inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-sky-500 to-cyan-500 px-3 py-1.5 text-xs font-semibold text-slate-950 shadow-glow hover:brightness-110"
+            className="hidden sm:inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-sky-500 to-cyan-500 px-3 py-1.5 text-xs font-semibold text-slate-950 transition-all duration-500 shadow-[0_0_15px_rgba(56,189,248,0.4),0_0_30px_rgba(6,182,212,0.2)] hover:shadow-[0_0_30px_rgba(56,189,248,0.8),0_0_60px_rgba(6,182,212,0.5),0_0_90px_rgba(56,189,248,0.3)] hover:scale-110 hover:-translate-y-0.5 glow-pulse"
           >
             <span>GitHub</span>
           </a>
@@ -50,7 +50,7 @@ export function Navbar() {
             href="https://www.linkedin.com/in/mayank-jain-016066293"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-sky-500 to-cyan-500 px-3 py-1.5 text-xs font-semibold text-slate-950 shadow-glow hover:brightness-110"
+            className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-sky-500 to-cyan-500 px-3 py-1.5 text-xs font-semibold text-slate-950 transition-all duration-500 shadow-[0_0_15px_rgba(56,189,248,0.4),0_0_30px_rgba(6,182,212,0.2)] hover:shadow-[0_0_30px_rgba(56,189,248,0.8),0_0_60px_rgba(6,182,212,0.5),0_0_90px_rgba(56,189,248,0.3)] hover:scale-110 hover:-translate-y-0.5 glow-pulse"
           >
             <span>LinkedIn</span>
           </a>
