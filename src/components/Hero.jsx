@@ -26,7 +26,7 @@ export function Hero() {
 
         <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-center">
           <div className="space-y-6 stagger-animation">
-            <h1 className="font-display text-7xl leading-tight tracking-tight sm:text-8xl lg:text-9xl bg-gradient-to-r from-slate-50 via-sky-200 to-cyan-200 bg-clip-text text-transparent animate-gradient">
+            <h1 className="font-display text-5xl leading-tight tracking-tight sm:text-7xl md:text-8xl lg:text-9xl bg-gradient-to-r from-slate-50 via-sky-200 to-cyan-200 bg-clip-text text-transparent md:animate-gradient">
               Mayank Jain
             </h1>
             <h2 className="mt-1 text-2xl font-medium text-slate-300 sm:text-2xl">

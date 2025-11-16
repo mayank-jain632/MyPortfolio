@@ -12,11 +12,13 @@ function App() {
   const particlesRef = useRef(null);
 
   useEffect(() => {
-    // Create floating particles across entire page
+    // Create floating particles - fewer on mobile for performance
     const container = particlesRef.current;
     if (!container) return;
 
-    const particleCount = 80;
+    // Detect mobile and reduce particle count
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 20 : 80;
     const particles = [];
 
     for (let i = 0; i < particleCount; i++) {
@@ -36,7 +38,8 @@ function App() {
         top: ${y}%;
         background: radial-gradient(circle, rgba(56, 189, 248, ${opacity}) 0%, transparent 70%);
         animation: float ${duration}s ease-in-out ${delay}s infinite;
-        filter: blur(${Math.random() * 1.5}px);
+        filter: ${isMobile ? 'none' : `blur(${Math.random() * 1.5}px)`};
+        will-change: transform;
       `;
 
       container.appendChild(particle);
