@@ -42,7 +42,7 @@ export function Navbar() {
             href="https://github.com/mayank-jain632"
             target="_blank"
             rel="noreferrer"
-            className="hidden sm:inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-sky-500 to-cyan-500 px-3 py-1.5 text-xs font-semibold text-slate-950 transition-all duration-300 shadow-[0_0_15px_rgba(56,189,248,0.4)] md:shadow-[0_0_15px_rgba(56,189,248,0.4),0_0_30px_rgba(6,182,212,0.2)] md:hover:shadow-[0_0_30px_rgba(56,189,248,0.8),0_0_60px_rgba(6,182,212,0.5)] md:hover:scale-110 md:hover:-translate-y-0.5 md:glow-pulse"
+            className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-sky-500 to-cyan-500 px-3 py-1.5 text-xs font-semibold text-slate-950 transition-all duration-300 shadow-[0_0_15px_rgba(56,189,248,0.4)] md:shadow-[0_0_15px_rgba(56,189,248,0.4),0_0_30px_rgba(6,182,212,0.2)] md:hover:shadow-[0_0_30px_rgba(56,189,248,0.8),0_0_60px_rgba(6,182,212,0.5)] md:hover:scale-110 md:hover:-translate-y-0.5 md:glow-pulse"
           >
             <span>GitHub</span>
           </a>
