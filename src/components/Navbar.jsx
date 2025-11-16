@@ -21,7 +21,7 @@ export function Navbar() {
           className="group flex items-center gap-3 text-sm font-semibold tracking-tight text-slate-50 transition-all duration-300 md:hover:scale-105"
         >
           <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-cyan-500 text-base font-bold shadow-glow transition-all duration-300 md:group-hover:shadow-[0_0_25px_rgba(56,189,248,0.6)] md:group-hover:rotate-12">
-            MJ
+            <img src="assets/pfp.jpeg" alt="MJ" className="h-10 w-10 rounded-full object-cover" />
           </span>
           <span className="text-xl font-bold sm:text-2xl bg-gradient-to-r from-slate-50 to-sky-200 bg-clip-text text-transparent">Mayank Jain</span>
         </button>
