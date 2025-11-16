@@ -19,8 +19,8 @@ export function Hero() {
       </div>
 
       <div className="section-shell relative flex min-h-[70vh] flex-col justify-center py-16 sm:py-20 lg:py-24">
-        <div className="inline-flex max-w-max items-center gap-2 rounded-full border border-slate-700/60 bg-slate-900/70 px-3 py-1 text-[0.75rem] font-medium text-slate-200">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+        <div className="inline-flex max-w-max items-center gap-2 rounded-full border border-slate-700/60 bg-slate-900/70 px-3 py-1 text-[0.75rem] font-medium text-slate-200 glow-pulse">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 " />
           <span>Open to Summer 2026 SWE / ML / Quant internships</span>
         </div>
 

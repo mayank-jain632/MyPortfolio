@@ -1,5 +1,19 @@
 export const projects = [
   {
+    name: "From‑Scratch ML Series",
+    slug: "from-scratch-ml",
+    highlight: "Core ML algorithms implemented from first principles.",
+    description:
+      "A series of Colab notebooks implementing K‑Means, Linear Regression, and a basic Neural Network from scratch — including gradient descent and backpropagation — to demystify how models actually learn.",
+    impact:
+      "Deepened my intuition for optimization, loss landscapes, and the trade‑offs between expressiveness and stability in simple models.",
+    tech: ["Python", "NumPy", "Jupyter"],
+    links: {
+      github: "https://github.com/mayank-jain632/K-Means"
+    },
+    category: "Foundations"
+  },
+  {
     name: "Indian Paper Trading App",
     slug: "indian-paper-trading-app",
     highlight: "A live‑data stock & futures simulator for Indian markets.",
@@ -67,20 +81,6 @@ export const projects = [
     tech: ["Python", "APIs", "Automation"],
     links: {},
     category: "Automation"
-  },
-  {
-    name: "From‑Scratch ML Series",
-    slug: "from-scratch-ml",
-    highlight: "Core ML algorithms implemented from first principles.",
-    description:
-      "A series of Colab notebooks implementing K‑Means, Linear Regression, and a basic Neural Network from scratch — including gradient descent and backpropagation — to demystify how models actually learn.",
-    impact:
-      "Deepened my intuition for optimization, loss landscapes, and the trade‑offs between expressiveness and stability in simple models.",
-    tech: ["Python", "NumPy", "Jupyter"],
-    links: {
-      github: "https://github.com/mayank-jain632/K-Means"
-    },
-    category: "Foundations"
   },
   {
     name: "Quant Research Notebooks",

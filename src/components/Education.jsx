@@ -17,8 +17,9 @@ export function Education() {
           <div className="glass-panel rounded-2xl p-5 float-animation hover:shadow-[0_0_40px_rgba(56,189,248,0.25)] transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1">
             <h3 className="text-sm font-semibold text-slate-50 bg-gradient-to-r from-slate-50 to-sky-200 bg-clip-text text-transparent">University of Texas at Austin</h3>
             <p className="mt-1 text-sm text-slate-200">B.S. Computer Science</p>
-            <p className="mt-2 text-[0.85rem] text-slate-300">Relevant coursework: Algorithms, Systems, Machine Learning</p>
-            <p className="mt-2 text-[0.85rem] text-slate-400">Austin, TX</p>
+            <p className="mt-2 text-[0.85rem] text-slate-300">Expected Graduation: May 2028</p>
+            <p className="mt-2 text-[0.85rem] text-slate-400">Relevant coursework: Algorithms, Systems, Machine Learning</p>
+            <p className="mt-2 text-[0.85rem] text-slate-500">Austin, TX</p>
           </div>
 
           <div className="glass-panel rounded-2xl p-5 float-animation hover:shadow-[0_0_40px_rgba(56,189,248,0.25)] transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1" style={{ animationDelay: '0.5s' }}>
