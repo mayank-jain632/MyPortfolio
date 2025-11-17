@@ -11,6 +11,52 @@ body {
   overflow-x: hidden;
 }
 
+/* Sweeping page gleam overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1; /* sits above particles (z-0) but below content (z-10 wrappers) */
+  background: linear-gradient(
+    115deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.02) 35%,
+    rgba(255,255,255,0.09) 50%,
+    rgba(255,255,255,0.025) 65%,
+    rgba(255,255,255,0) 100%
+  );
+  background-size: 300% 300%;
+  mix-blend-mode: screen;
+  animation: page-gleam 18s linear infinite; /* slowed down */
+  opacity: 0.55; /* dimmer overall intensity */
+}
+
+@keyframes page-gleam {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Stronger manual gleam class for selective elements */
+.gleam-strong {
+  position: relative;
+}
+.gleam-strong::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.35) 45%, rgba(255,255,255,0.65) 50%, rgba(255,255,255,0.35) 55%, rgba(255,255,255,0) 100%);
+  background-size: 250% 100%;
+  mix-blend-mode: screen;
+  animation: element-gleam 6s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes element-gleam {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
 .glass-panel {
   @apply bg-slate-900/60 border border-slate-700/60 backdrop-blur-xl;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -142,6 +188,30 @@ body {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
+  --amp-x: 20px; /* horizontal wander amplitude */
+  --amp-y: 20px; /* vertical wander amplitude */
+  --base-opacity: 0.5;
+}
+
+/* Dynamic particle animations */
+@keyframes particle-drift {
+  0% { transform: translate(0,0); }
+  20% { transform: translate(calc(var(--amp-x) * 0.3), calc(var(--amp-y) * -0.3)); }
+  40% { transform: translate(calc(var(--amp-x) * 0.6), calc(var(--amp-y) * 0.4)); }
+  60% { transform: translate(calc(var(--amp-x) * -0.4), calc(var(--amp-y) * 0.6)); }
+  80% { transform: translate(calc(var(--amp-x) * 0.2), calc(var(--amp-y) * -0.2)); }
+  100% { transform: translate(0,0); }
+}
+
+@keyframes particle-twinkle {
+  0%, 100% {
+    opacity: var(--base-opacity);
+    filter: drop-shadow(0 0 2px rgba(56,189,248,0.35));
+  }
+  50% {
+    opacity: calc(var(--base-opacity) * 0.15);
+    filter: drop-shadow(0 0 4px rgba(6,182,212,0.6));
+  }
 }
 
 /* Stagger animations for children */
@@ -195,11 +265,30 @@ body {
   .shimmer {
     animation: none;
   }
+
+  /* Simplify particle animations on mobile */
+  .particle {
+    animation: none !important;
+    filter: none !important;
+    opacity: 0.4 !important;
+  }
   
   /* Simplify glow effects on mobile */
   .glow-pulse {
     animation: none;
     box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+  }
+
+  /* Dim or disable page gleam on mobile to reduce glare */
+  body::before {
+    animation: none;
+    opacity: 0.35;
+    background: linear-gradient(
+      115deg,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0.05) 50%,
+      rgba(255,255,255,0) 100%
+    );
   }
   
   /* Reduce transform complexity */
