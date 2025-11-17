@@ -129,7 +129,3 @@ npm run preview
 ```
 
 Deploy the `dist/` folder to your hosting service (Vercel, Netlify, GitHub Pages, etc.)
-
-## 📄 License
-
-MIT - feel free to use this as a template for your own portfolio!
