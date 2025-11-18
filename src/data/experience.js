@@ -1,5 +1,28 @@
 export const experiences = [
   {
+    company: "Quant — Options Research Collective",
+    title: "AI/Quantitative Developer",
+    location: "McKinney, TX",
+    period: "June 2024 – Present",
+    bullets: [
+      "Design and backtest systematic options strategies on US and India markets, focusing on 0DTE/1DTE SPY, QQQ, and index options.",
+      "Build a Python research stack using Polygon.io, pandas, and multiprocessing to process millions of ticks and generate robust performance metrics.",
+      "Experiment with data-driven approaches for filling missing options chain data using models like Black–Scholes while keeping results grounded in real market behavior."
+    ],
+    tags: ["Python", "Pandas", "Options", "Backtesting", "Polygon.io"]
+  },
+  {
+    company: "Swift Bot Technologies",
+    title: "Backend Developer",
+    location: "McKinney, TX",
+    period: "May 2024 – Present",
+    bullets: [
+      "Bootstrapped a technical recruiting venture specializing in Java developers, building internal tools to streamline sourcing and screening.",
+      "Automated candidate matching workflows with lightweight ML and scripting, helping generate meaningful revenue while staying lean."
+    ],
+    tags: ["Entrepreneurship", "Automation", "Recruiting Tech"]
+  },
+  {
     company: "Avawatz — AI Defense Startup",
     title: "Machine Learning & Computer Vision Intern",
     location: "Remote",
@@ -12,27 +35,16 @@ export const experiences = [
     tags: ["Computer Vision", "Deep Learning", "Python", "PyTorch"]
   },
   {
-    company: "Quant — Options Research Collective",
-    title: "Lead Quantitative Developer",
-    location: "McKinney, TX",
-    period: "June 2024 – Present",
+    company: "CARAML Labs — Research Project",
+    title: "Undergraduate Researcher",
+    location: "Remote",
+    period: "May 2024 – July 2024",
     bullets: [
-      "Design and backtest systematic options strategies on US and India markets, focusing on 0DTE/1DTE SPY, QQQ, and index options.",
-      "Build a Python research stack using Polygon.io, pandas, and multiprocessing to process millions of ticks and generate robust performance metrics.",
-      "Experiment with data-driven approaches for filling missing options chain data using models like Black–Scholes while keeping results grounded in real market behavior."
+      "Developed an AI framework for training deep learning models with minimal labeled data using conditional GANs for synthetic generation.",
+      "Implemented an LSTM‑based convolutional autoencoder for anomaly detection, focusing on robust feature learning from noisy signals.",
+      "Ran ablation studies and experiments, documenting findings to guide future active learning and data‑efficient modeling work."
     ],
-    tags: ["Python", "Pandas", "Options", "Backtesting", "Polygon.io"]
-  },
-  {
-    company: "Swift Bot Technologies",
-    title: "Founder & Technical Lead",
-    location: "McKinney, TX",
-    period: "May 2024 – Present",
-    bullets: [
-      "Bootstrapped a technical recruiting venture specializing in Java developers, building internal tools to streamline sourcing and screening.",
-      "Automated candidate matching workflows with lightweight ML and scripting, helping generate meaningful revenue while staying lean."
-    ],
-    tags: ["Entrepreneurship", "Automation", "Recruiting Tech"]
+    tags: ["Research", "GANs", "Autoencoders", "Data‑Efficient ML"]
   },
   {
     company: "Oil A New — 501(c)(3) Nonprofit",
@@ -45,17 +57,5 @@ export const experiences = [
       "Built backend workflows to track donations, logistics, and impact metrics, enabling transparent storytelling for donors and partners."
     ],
     tags: ["Full‑Stack", "Nonprofit", "Node.js", "Product"]
-  },
-  {
-    company: "CARAML Labs — Research Project",
-    title: "Undergraduate Researcher",
-    location: "Remote",
-    period: "May 2024 – July 2024",
-    bullets: [
-      "Developed an AI framework for training deep learning models with minimal labeled data using conditional GANs for synthetic generation.",
-      "Implemented an LSTM‑based convolutional autoencoder for anomaly detection, focusing on robust feature learning from noisy signals.",
-      "Ran ablation studies and experiments, documenting findings to guide future active learning and data‑efficient modeling work."
-    ],
-    tags: ["Research", "GANs", "Autoencoders", "Data‑Efficient ML"]
   },
 ];
