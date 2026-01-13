@@ -63,6 +63,35 @@ export function Education() {
             </p>
           </div>
 
+          <div
+            className="glass-panel rounded-2xl p-5 float-animation hover:shadow-[0_0_40px_rgba(56,189,248,0.25)] transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1"
+            style={{ animationDelay: '0.9s' }}
+          >
+            <h3 className="text-sm font-semibold text-slate-50 bg-gradient-to-r from-slate-50 to-sky-200 bg-clip-text text-transparent">
+              Microsoft Python Development
+            </h3>
+
+            <p className="mt-1 text-sm text-slate-200">Microsoft</p>
+
+            <p className="mt-2 text-[0.85rem] text-slate-300">
+              Issued Jan 2026 · Credential ID M1L7GEG8QAKO
+            </p>
+
+            <p className="mt-2 text-[0.85rem] text-slate-400">
+              <a
+                href="https://www.coursera.org/account/accomplishments/specialization/M1L7GEG8QAKO"
+                target="_blank"
+                rel="noreferrer"
+                className="group text-sky-300 hover:text-sky-200 transition-all duration-300"
+              >
+                <span className="group-hover:underline">View Certificate</span>
+                <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  ↗
+                </span>
+              </a>
+            </p>
+          </div>
+
         </div>
       </div>
     </section>
