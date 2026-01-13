@@ -74,6 +74,11 @@ export function Education() {
             <p className="mt-1 text-sm text-slate-200">Microsoft</p>
 
             <p className="mt-2 text-[0.85rem] text-slate-300">
+              Focused on Python fundamentals, data handling, automation, and building practical
+              applications.
+            </p>
+
+            <p className="mt-2 text-[0.85rem] text-slate-300">
               Issued Jan 2026 · Credential ID M1L7GEG8QAKO
             </p>
 
