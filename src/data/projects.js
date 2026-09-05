@@ -1,5 +1,33 @@
 export const projects = [
   {
+    name: "Clarity",
+    slug: "clarity",
+    highlight: "A dementia patient assistant app with an on-device AI pipeline.",
+    description:
+      "Built the full backend and AI pipeline for a dementia patient assistant app, including a custom-trained YOLOv11 model for face and medication recognition and Gemini Flash for conversational voice interaction, served via FastAPI. Architected a private Tailscale mesh network between the iPhone client and local inference backend, keeping patient data off public cloud infrastructure with sub-100ms local latency.",
+    impact:
+      "Won Best Use of Supabase at Hook 'Em Hacks 2026 (200+ participants).",
+    tech: ["FastAPI", "YOLOv11", "Gemini", "Supabase", "Expo", "Next.js", "Tailscale"],
+    links: {
+      github: ""
+    },
+    category: "AI & ML"
+  },
+  {
+    name: "Relay",
+    slug: "relay",
+    highlight: "A VS Code extension that bridges Slack and IDE tasks.",
+    description:
+      "Built and published a Visual Studio Code extension to the official Marketplace, converting Slack messages into assignable developer tasks via a REST API, PostgreSQL task store, and Next.js project management dashboard. Implemented a /nudge Slack command for direct task assignment with file-path targeting; deployed backend on Railway with a Vercel-hosted frontend dashboard.",
+    impact:
+      "Streamlines the handoff between team chat and IDE-level task tracking for developer teams.",
+    tech: ["Node.js", "Next.js", "PostgreSQL", "Slack API", "GitHub OAuth"],
+    links: {
+      github: ""
+    },
+    category: "Automation"
+  },
+  {
     name: "From‑Scratch ML Series",
     slug: "from-scratch-ml",
     highlight: "Core ML algorithms implemented from first principles.",

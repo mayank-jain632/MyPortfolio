@@ -12,12 +12,13 @@ export default {
       },
       colors: {
         accent: {
-          500: "#38bdf8",
-          600: "#0ea5e9"
+          400: "#e3b567",
+          500: "#c99a44",
+          600: "#a97e33"
         }
       },
       boxShadow: {
-        glow: "0 0 40px rgba(56, 189, 248, 0.4)"
+        glow: "0 4px 20px rgba(201, 154, 68, 0.25)"
       },
       backgroundImage: {
         "radial-dots": "radial-gradient(circle at 1px 1px, rgba(148, 163, 184, 0.3) 1px, transparent 0)"
