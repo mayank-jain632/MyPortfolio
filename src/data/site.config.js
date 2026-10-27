@@ -38,12 +38,11 @@ export const site = {
   links: {
     github: "https://github.com/mayank-jain632",
     linkedin: "https://www.linkedin.com/in/mayank-jain-016066293/",
-    // TODO: the PDF in assets/ is an old resume with private details. Drop the
-    // current one at public/Mayank_Jain_Resume.pdf. Until then this link 404s.
+    // TODO: Mayank adds a web-safe resume (no phone, no desk figures) here. Until then this link 404s.
+    // scripts/check-data.mjs scans the PDF text once the file exists.
     resume: "/Mayank_Jain_Resume.pdf",
-    // D7: GitHub profile URL is canonical. The repo points to
-    // my-portfolio-eight-azure-119agdlasi.vercel.app instead.
-    // TODO: confirm the canonical URL and update the GitHub repo "website" field to match.
+    // D7, checked 2026-10-27: this URL serves the production deployment (200).
+    // my-portfolio-eight-azure-119agdlasi.vercel.app, the repo's "website" field, returns 404.
     canonical: "https://mayank-jain-portfolio.vercel.app",
   },
 };

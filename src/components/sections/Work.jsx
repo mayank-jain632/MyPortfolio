@@ -1,4 +1,5 @@
 import { featuredProjects } from "../../data/projects";
+import { ProjectMedia } from "../media/ProjectMedia";
 import { RevealGroup, RevealItem } from "../fx/Reveal";
 import { SectionHeader } from "../ui/SectionHeader";
 
@@ -12,10 +13,13 @@ export function Work() {
             <RevealItem
               as="li"
               key={project.slug}
-              className="flex flex-col gap-1 border-b border-hairline py-6 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+              className="flex flex-col gap-4 border-b border-hairline py-6"
             >
-              <span className="text-title font-medium text-fg">{project.name}</span>
-              <span className="font-mono text-sm text-fg-subtle">{project.award || project.year}</span>
+              <span className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                <span className="text-title font-medium text-fg">{project.name}</span>
+                <span className="font-mono text-sm text-fg-subtle">{project.award || project.year}</span>
+              </span>
+              <ProjectMedia project={project} />
             </RevealItem>
           ))}
         </RevealGroup>

@@ -31,7 +31,7 @@ export const stats = [
   stat({ id: "training-images", value: 3000, suffix: "+", label: "image training set, built end to end", source: "AvaWatz" }),
   stat({ id: "hackathon-hours", value: 6, suffix: " hours", label: "to build a recursive multi-agent platform", source: "AWS Agentic AI Hackathon" }),
   stat({ id: "mesh-latency", value: 100, prefix: "<", suffix: "ms", label: "latency over a private Tailscale mesh", source: "Clarity" }),
-  stat({ id: "recognition-trials", value: 30, approx: true, label: "live trials recognizing enrolled family", source: "Myst" }),
+  stat({ id: "recognition-trials", value: 30, approx: true, label: "live trials where our team's app recognized enrolled family", source: "Myst (team result)" }),
   stat({ id: "live-strategies", value: 4, suffix: " to 5", label: "live strategies gated by volatility signals", source: "Trading desk" }),
   stat({ id: "stores", value: 3, suffix: "+", label: "stores running shelf vision", source: "Family Dollar via Convergent Forge" }),
   stat({ id: "hackathon-podiums", value: 3, label: "hackathon podiums in 2026", source: "Clarity, AWS, Myst", featured: true }),

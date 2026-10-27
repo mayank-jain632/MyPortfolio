@@ -1,7 +1,9 @@
 // Projects and case studies, from hub/PORTFOLIO_CONTEXT.md section 5.
-// Repo links verified against the GitHub API on 2026-10-27.
+// Repo, live, and Marketplace links verified on 2026-10-27 (GitHub API, HTTP and framing headers).
 // Dropped per context: Quant Research Notebooks, Pooled, Shark Radar. Not shown: constellation_2.0.
-// Empty `links.github` on a featured project requires a `todo` (enforced by scripts/check-data.mjs).
+// No archive of minor repos. Earlier work lives in experience.js without repo links.
+// A featured project without `links.github` needs `noRepo` (why) or a `todo` (enforced by scripts/check-data.mjs).
+// Media files live in public/media/<slug>/ and are referenced by root-relative path ("/media/<slug>/x.webp").
 
 import { decisions } from "./site.config.js";
 
@@ -9,6 +11,23 @@ const GITHUB = "https://github.com/mayank-jain632";
 
 /** @typedef {"signal-pipeline" | "invoice" | "agent-tree" | "shelf-vision" | "none"} DemoType */
 /** @typedef {"hackathon" | "shipped" | "in-progress" | "client-work"} Status */
+
+/**
+ * @typedef {object} Links
+ * @property {string} github main public repo, or ""
+ * @property {string} live public URL, or ""
+ * @property {string} [githubMirror] secondary public copy of the repo
+ * @property {string} [devpost]
+ * @property {string} [marketplace]
+ */
+
+/**
+ * @typedef {object} Media
+ * @property {{ provider: "youtube" | "vimeo", id: string, title: string }} [video] loads only on click
+ * @property {string} [poster] root-relative image shown on the video facade
+ * @property {{ src: string, alt: string }[]} [images] root-relative paths under /media/<slug>/
+ * @property {string} [liveEmbed] https URL, only if it allows framing and shows no private data
+ */
 
 /**
  * @typedef {object} Project
@@ -25,7 +44,11 @@ const GITHUB = "https://github.com/mayank-jain632";
  * @property {string[]} build
  * @property {string[]} result
  * @property {string[]} stack
- * @property {{ github: string, live: string }} links
+ * @property {string[]} [teamBuild] team work shown under "Built with the team", never as mine
+ * @property {string[]} [builtWith] teammates credited as "Built with"
+ * @property {Links} links
+ * @property {Media} [media] each block renders only when present
+ * @property {string} [noRepo] why there is no public repo (client or employer code)
  * @property {DemoType} demoType
  * @property {number} order
  * @property {boolean} [anonymous] client work, never name the client
@@ -54,6 +77,7 @@ export const projects = [
     ],
     result: ["2nd place, AWS Agentic AI Hackathon.", "Built in 6 hours."],
     stack: ["React", "Vite", "FastAPI", "AWS Bedrock", "EC2", "CloudFront", "ECR", "Secrets Manager", "IAM", "Alpaca"],
+    // The CloudFront URL in the README (dgvmahl7u2clq.cloudfront.net) no longer resolves, so no live link.
     links: { github: `${GITHUB}/aws-ai-hackathon`, live: "" },
     demoType: "agent-tree",
     order: 1,
@@ -63,8 +87,7 @@ export const projects = [
     name: "Signal execution platform",
     tagline: "TradingView alerts to broker orders in under a second.",
     award: "Client work",
-    // TODO: confirm the years for the anonymous client engagements.
-    year: "",
+    year: "2025 to Present",
     role: "Founder and engineer, Crescent Dynamics",
     status: "client-work",
     featured: true,
@@ -83,7 +106,7 @@ export const projects = [
     demoType: "signal-pipeline",
     order: 2,
     anonymous: true,
-    todo: "TODO: client work, no public repo by default. Confirm nothing should be linked.",
+    noRepo: "Client work. The client stays anonymous and the code is not public.",
   },
   {
     slug: "clarity",
@@ -92,6 +115,7 @@ export const projects = [
     award: "1st Place, Supabase x Gemini Track",
     year: "2026",
     role: "Built the backend and AI pipeline",
+    builtWith: ["Krishna Perla", "Harshal Dhaduk", "RJ Paidi"],
     status: "hackathon",
     featured: true,
     category: "applied-ai",
@@ -104,10 +128,15 @@ export const projects = [
     ],
     result: ["1st place, Supabase x Gemini Track.", "Sub-100ms latency over the private mesh."],
     stack: ["YOLOv11", "Gemini", "FastAPI", "Supabase", "Next.js", "Tailscale"],
-    links: { github: "", live: "" },
+    // Devpost lists bruhlol108/SimpleClarity, which returns 404. The public team repo is
+    // rjp123456/SimpleClarity ("Clarity Lite, HookEm Hacks 2026"), which includes Mayank's commits.
+    links: {
+      github: "https://github.com/rjp123456/SimpleClarity",
+      live: "",
+      devpost: "https://devpost.com/software/clarity-lxbwpt",
+    },
     demoType: "none",
     order: 3,
-    todo: "TODO: Clarity repo is not public under mayank-jain632. Confirm the repo name or owner.",
   },
   {
     slug: "myst",
@@ -115,24 +144,39 @@ export const projects = [
     tagline: "A hands-free Ray-Ban Meta companion for people with early-stage memory loss.",
     award: "2nd Place, HackTX Meta Track",
     year: "2026",
-    // TODO: confirm Mayank's specific role on the 5-person team.
-    role: "Team of 5",
+    role: "UI, live transcription, and memory, in a team of 4",
+    builtWith: ["Krishna Perla", "Harshal Dhaduk", "RJ Paidi"],
     status: "hackathon",
     featured: true,
     category: "applied-ai",
     problem: "People with early-stage memory loss need help recognizing family and recalling conversations, without reaching for a phone.",
+    // TODO: Mayank's stated role is "entire UI, live transcription, memory features". Commit history
+    // backs live transcription fully and the UI and memory work in part (see docs/TODO.md). Copy below
+    // stays within what the history shows until Mayank confirms.
     build: [
-      "Kotlin on Android with Meta Wearables DAT and Muse Spark.",
+      "I built the Android UI for reminders in Kotlin and worked on the home and family enrollment screens.",
+      "I built live transcription: glasses audio streams to Muse in real time and comes back as a conversation recap.",
+      "I worked on the memory features, the household records and visit memory that bring back who visited.",
+    ],
+    // TODO: Android Keystore and the face recognition work are attributed to the team until Mayank confirms which parts were his.
+    teamBuild: [
+      "Our team's app uses Meta Wearables DAT on Android.",
       "Consent-gated, revocable face recognition that only names enrolled family and declines to guess on strangers.",
-      "Live conversation recaps from glasses audio.",
       "API key secured with Android Keystore.",
     ],
     result: [
       "2nd place, HackTX Meta Track.",
-      "Correctly recognized enrolled family across about 30 live trials.",
+      "Our team's app correctly recognized enrolled family across about 30 live trials.",
     ],
     stack: ["Kotlin", "Android", "Meta Wearables DAT", "Muse Spark", "Android Keystore"],
-    links: { github: `${GITHUB}/Myst`, live: "" },
+    // harshaldhaduk/myst is where the team worked (created 2026-10-24, 61 commits).
+    // mayank-jain632/Myst is a later copy of the same history (created 2026-10-27, 60 commits).
+    links: {
+      github: "https://github.com/harshaldhaduk/myst",
+      githubMirror: `${GITHUB}/Myst`,
+      live: "",
+      devpost: "https://devpost.com/software/myst-78dz52",
+    },
     demoType: "none",
     order: 4,
     note: "No photos of real people. Abstract or illustrated visuals only.",
@@ -142,8 +186,7 @@ export const projects = [
     name: "Invoice automation tool",
     tagline: "An Excel-like tool that replaced industrial invoicing software.",
     award: "Client work",
-    // TODO: confirm the years for the anonymous client engagements.
-    year: "",
+    year: "2025 to Present",
     role: "Founder and engineer, Crescent Dynamics",
     status: "client-work",
     featured: true,
@@ -159,7 +202,7 @@ export const projects = [
     demoType: "invoice",
     order: 5,
     anonymous: true,
-    todo: "TODO: a public Invoice-Generator repo exists. Confirm whether to link it (client stays anonymous).",
+    noRepo: "Client work. The client stays anonymous and the code is not public.",
   },
   {
     slug: "family-dollar-shelf-vision",
@@ -181,7 +224,7 @@ export const projects = [
     links: { github: "", live: "" },
     demoType: "shelf-vision",
     order: 6,
-    todo: "TODO: employer work, no public repo expected. Confirm.",
+    noRepo: "Employer code, not public.",
   },
   {
     slug: "relay",
@@ -200,18 +243,25 @@ export const projects = [
     ],
     result: ["Cut task context-switching about 30 to 35% (resume claim)."],
     stack: ["VS Code API", "Node.js", "PostgreSQL", "Next.js", "GitHub OAuth", "Railway", "Vercel"],
-    links: { github: `${GITHUB}/Relay`, live: "" },
+    // Repo homepage relay-six-indol.vercel.app redirects (307) here. Public landing page with sample
+    // data only, no X-Frame-Options or CSP frame-ancestors, so it can be embedded.
+    links: {
+      github: `${GITHUB}/Relay`,
+      live: "https://relay-space.vercel.app",
+      marketplace: "https://marketplace.visualstudio.com/items?itemName=Relay.relay-tasks",
+    },
+    media: { liveEmbed: "https://relay-space.vercel.app" },
     demoType: "none",
     order: 7,
   },
   {
     // D6: shown as a small "In progress" card. Repo last pushed 2026-10-15, so not dormant.
+    // No launch or announcement copy. Mayank will post about it separately.
     slug: "blindspot",
     name: "Blindspot",
     tagline: "VS Code extension that shows which parts of your codebase you've never actually looked at.",
     year: "2026",
-    // TODO: confirm role (solo or team).
-    role: "",
+    role: "Solo project",
     status: "in-progress",
     featured: decisions.showBlindspot,
     category: "full-stack",
@@ -229,36 +279,3 @@ export const projects = [
 export const featuredProjects = projects
   .filter((project) => project.featured)
   .sort((a, b) => a.order - b.order);
-
-/**
- * "Earlier projects" cards. Only entries with a verified public repo.
- * Excluded until a public repo exists:
- *   TODO: Oil A New website (Oil-A-New-Website is not public).
- *   TODO: Dorm Decor 3D planner (no public repo found).
- */
-export const archive = [
-  {
-    slug: "from-scratch-ml",
-    name: "From-scratch ML series",
-    tagline: "K-Means, linear regression, and a neural network implemented from first principles.",
-    stack: ["Python", "NumPy"],
-    links: { github: `${GITHUB}/K-Means`, live: "" },
-    order: 1,
-  },
-  {
-    slug: "caraml-research",
-    name: "CARAML Labs research",
-    tagline: "Data-efficient AI research with conditional GANs and autoencoders.",
-    stack: ["Python", "PyTorch"],
-    links: { github: `${GITHUB}/CARAML_Labs_Research_Project`, live: "" },
-    order: 2,
-  },
-  {
-    slug: "indian-paper-trading",
-    name: "Indian paper trading app",
-    tagline: "Stock and futures simulator for testing strategies with real-time data.",
-    stack: ["TypeScript", "React", "Node.js"],
-    links: { github: `${GITHUB}/indianPaperTradingApp`, live: "" },
-    order: 3,
-  },
-].filter((project) => project.links.github);
