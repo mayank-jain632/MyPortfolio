@@ -6,44 +6,48 @@
 :root {
   color-scheme: dark;
 
-  --color-canvas: 13% 0.006 265;
-  --color-surface: 16.5% 0.006 265;
-  --color-raised: 20% 0.007 265;
-  --color-fg: 97% 0.003 265;
-  --color-fg-muted: 76% 0.008 265;
-  --color-fg-subtle: 62% 0.01 265;
-  --color-accent: 91% 0.2 124;
-  --color-accent-ink: 13% 0.006 265;
-  --color-accent-deep: 52% 0.16 132;
-  --color-paper: 97% 0.004 100;
-  --color-ink: 17% 0.006 265;
-  --color-hairline: oklch(100% 0 0 / 0.08);
-  --color-hairline-strong: oklch(100% 0 0 / 0.14);
+  /* Jet black canvas, neutral grey ramp (no color cast), one blue. */
+  --color-canvas: 0% 0 0;
+  --color-surface: 17.5% 0.002 286;
+  --color-raised: 23% 0.003 286;
+  --color-fg: 97.2% 0.002 286;
+  --color-fg-muted: 76% 0.004 286;
+  --color-fg-subtle: 64% 0.006 286;
+  --color-accent: 70% 0.165 247;
+  --color-accent-fill: 55% 0.19 256;
+  --color-accent-ink: 100% 0 0;
+  --color-paper: 97.2% 0.002 286;
+  --color-ink: 23% 0.003 286;
+  --color-ink-muted: 50% 0.006 286;
+  --color-hairline: oklch(100% 0 0 / 0.1);
+  --color-hairline-strong: oklch(100% 0 0 / 0.18);
 
-  --font-sans: "Instrument Sans Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono Variable", ui-monospace, "SFMono-Regular", monospace;
+  /* Apple devices render the system face. Everywhere else gets Inter Tight. */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter Tight Variable", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
 
   --text-micro: 0.75rem;
   --text-sm: 0.875rem;
-  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
-  --text-lead: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
-  --text-title: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
+  --text-base: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  --text-lead: clamp(1.1875rem, 1.05rem + 0.6vw, 1.5rem);
+  --text-title: clamp(1.5rem, 1.2rem + 1.4vw, 2.5rem);
   --text-headline: clamp(2.25rem, 1.4rem + 3.6vw, 4.5rem);
-  --text-display: clamp(3rem, 1.6rem + 6vw, 7rem);
-  --text-hero: clamp(3.5rem, 1rem + 11vw, 11rem);
+  --text-display: clamp(2.75rem, 1.4rem + 6vw, 6.5rem);
+  --text-hero: clamp(2.5rem, 1rem + 6.4vw, 5.75rem);
 
   --space-gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
-  --space-section: clamp(5rem, 3rem + 7vw, 10rem);
-  --nav-offset: 6rem;
+  --space-section: clamp(5rem, 3rem + 8vw, 11rem);
+  --nav-height: 3rem;
+  --nav-offset: 4rem;
 
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
   --radius-xl: 32px;
 
-  --shadow-card: inset 0 1px 0 0 oklch(100% 0 0 / 0.04), 0 24px 48px -24px oklch(0% 0 0 / 0.6);
-  --shadow-float: inset 0 1px 0 0 oklch(100% 0 0 / 0.06), 0 12px 32px -8px oklch(0% 0 0 / 0.55);
-  --shadow-accent: 0 0 0 1px oklch(var(--color-accent) / 0.4), 0 10px 32px -10px oklch(var(--color-accent) / 0.5);
+  --shadow-card: inset 0 1px 0 0 oklch(100% 0 0 / 0.05);
+  --shadow-float: 0 20px 60px -20px oklch(0% 0 0 / 0.8);
+  --shadow-accent: none;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
@@ -51,12 +55,13 @@
   --duration-fast: 150ms;
   --duration-base: 250ms;
   --duration-slow: 500ms;
-  --duration-reveal: 800ms;
+  --duration-reveal: 900ms;
 }
 
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
+    background: #000;
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -68,17 +73,7 @@
   body {
     @apply bg-canvas font-sans text-base text-fg-muted antialiased;
     overflow-x: clip;
-  }
-
-  /* Grain overlay */
-  body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 100;
-    pointer-events: none;
-    opacity: 0.04;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    font-feature-settings: "ss01", "cv11";
   }
 
   section[id] {
@@ -92,8 +87,8 @@
   }
 
   ::selection {
-    background: oklch(var(--color-accent) / 0.85);
-    color: oklch(var(--color-accent-ink));
+    background: oklch(var(--color-accent-fill));
+    color: #fff;
   }
 }
 
@@ -102,50 +97,29 @@
     @apply mx-auto w-full max-w-content px-gutter;
   }
 
-  .eyebrow {
-    @apply font-mono text-micro uppercase text-fg-subtle;
-  }
-
-  /* Soft light leak behind key moments. Position with utilities on the element. */
-  .light-leak {
-    pointer-events: none;
-    position: absolute;
-    border-radius: 9999px;
-    filter: blur(80px);
-    background: radial-gradient(closest-side, oklch(var(--color-accent) / 0.18), transparent);
-  }
-
-  .light-leak-cool {
-    background: radial-gradient(closest-side, oklch(85% 0.04 265 / 0.12), transparent);
-  }
-
+  /* Light section for rhythm: the only non-black surface. */
   .surface-light {
     @apply bg-paper text-ink;
-    --color-hairline: oklch(0% 0 0 / 0.08);
-    --color-hairline-strong: oklch(0% 0 0 / 0.16);
-  }
-}
-
-@layer utilities {
-  .marquee-track {
-    animation: marquee var(--marquee-duration, 40s) linear infinite;
-  }
-
-  .marquee-paused .marquee-track,
-  .marquee-root:hover .marquee-track,
-  .marquee-root:focus-within .marquee-track {
-    animation-play-state: paused;
+    color-scheme: light;
+    --color-fg: 23% 0.003 286;
+    --color-fg-muted: 40% 0.005 286;
+    --color-fg-subtle: 50% 0.006 286;
+    --color-accent: 50% 0.19 256;
+    --color-raised: 93% 0.002 286;
+    --color-hairline: oklch(0% 0 0 / 0.14);
+    --color-hairline-strong: oklch(0% 0 0 / 0.28);
   }
 
-  @keyframes marquee {
-    to {
-      transform: translate3d(-50%, 0, 0);
-    }
+  .tabular {
+    font-variant-numeric: tabular-nums;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .marquee-track {
-      animation: none;
-    }
+  /* Hide scrollbars on horizontal rails. */
+  .rail {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .rail::-webkit-scrollbar {
+    display: none;
   }
 }

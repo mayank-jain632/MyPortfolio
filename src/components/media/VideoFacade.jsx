@@ -43,7 +43,7 @@ export function VideoFacade({ video, poster }) {
           <span className="sr-only">Play video: {video.title}</span>
           <span
             aria-hidden="true"
-            className="relative flex size-16 items-center justify-center rounded-pill bg-accent text-accent-ink shadow-accent transition-transform duration-base ease-out-quart group-hover:scale-105 group-active:scale-95"
+            className="relative flex size-16 items-center justify-center rounded-pill bg-accent-fill text-white transition-transform duration-base ease-out-quart group-hover:scale-105 group-active:scale-95"
           >
             <svg viewBox="0 0 24 24" className="ml-1 size-6" fill="currentColor">
               <path d="M8 5.5v13l11-6.5z" />

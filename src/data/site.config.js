@@ -51,10 +51,15 @@ export const site = {
 export const navigation = [
   { id: "services", label: "Services" },
   { id: "work", label: "Work" },
-  { id: "proof", label: "Proof" },
+  { id: "proof", label: "Highlights" },
   { id: "experience", label: "Experience" },
+  { id: "specs", label: "Tech specs" },
   { id: "contact", label: "Contact" },
 ];
+
+// True once public/Mayank_Jain_Resume.pdf exists at build time (see vite.config.js).
+// Until then the resume link is hidden instead of linking to a 404.
+export const hasResume = typeof __HAS_RESUME__ !== "undefined" && __HAS_RESUME__;
 
 // ---------------------------------------------------------------------------
 // Hero and about copy (context section 1). The first headline is the one shown.
@@ -66,7 +71,7 @@ export const headlines = [
 ];
 
 export const hero = {
-  eyebrow: "Introducing Mayank Jain",
+  eyebrow: "Introducing",
   headline: headlines[0],
   subhead:
     "Trading automation, applied AI, and full-stack products for people who would rather ship than babysit. Independent engineer, UT Austin CS '28.",

@@ -1,30 +1,28 @@
 import { Reveal } from "../fx/Reveal";
-import { SplitText } from "../fx/SplitText";
 
 /**
- * Numbered section heading: mono index and eyebrow, then a large title.
+ * Section heading in two tones, like a product page: the claim in white, the continuation in grey.
+ * On the light section pass tone="light".
+ *
  * @param {object} props
- * @param {string} props.index e.g. "01"
- * @param {string} props.eyebrow
- * @param {string} props.title
+ * @param {string} props.title the claim
+ * @param {string} [props.rest] the continuation sentence
  * @param {string} props.headingId id for aria-labelledby on the section
+ * @param {string} [props.lead] one supporting sentence under the heading
  */
-export function SectionHeader({ index, eyebrow, title, headingId, isPlaceholder = false }) {
+export function SectionHeader({ title, rest, headingId, lead, align = "left", className }) {
+  const alignment = align === "center" ? "mx-auto text-center" : "";
   return (
-    <header className="mb-12 sm:mb-16">
-      <Reveal className="flex items-center gap-3">
-        <span className="eyebrow text-accent">{index}</span>
-        <span aria-hidden="true" className="h-px w-8 bg-hairline-strong" />
-        <span className="eyebrow">{eyebrow}</span>
-        {isPlaceholder && (
-          <span className="ml-auto rounded-sm border border-hairline px-2 py-0.5 font-mono text-micro uppercase text-fg-subtle">
-            Placeholder
-          </span>
-        )}
+    <header className={`mb-14 sm:mb-20 ${alignment} ${className ?? ""}`}>
+      <Reveal as="h2" id={headingId} className={`max-w-[22ch] text-headline font-semibold text-fg ${align === "center" ? "mx-auto" : ""}`}>
+        {title}
+        {rest && <span className="text-fg-subtle"> {rest}</span>}
       </Reveal>
-      <h2 id={headingId} className="mt-5 max-w-[18ch] text-headline font-semibold text-fg">
-        <SplitText text={title} />
-      </h2>
+      {lead && (
+        <Reveal as="p" delay={0.1} className={`mt-6 max-w-prose text-lead text-fg-muted ${align === "center" ? "mx-auto" : ""}`}>
+          {lead}
+        </Reveal>
+      )}
     </header>
   );
 }

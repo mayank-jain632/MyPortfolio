@@ -1,6 +1,6 @@
 # Open items
 
-Running list across steps. Updated at the end of each step. Last update: Step 2 follow-ups, 2026-10-27.
+Running list across steps. Updated at the end of each step. Last update: redesign (Steps 3 to 6), 2026-10-27.
 
 ## Waiting on Mayank
 
@@ -13,16 +13,16 @@ Running list across steps. Updated at the end of each step. Last update: Step 2 
 - [ ] **Dorm Decor** stays out until a public repo exists.
 - [ ] **GitHub repo "website" field** points to `my-portfolio-eight-azure-119agdlasi.vercel.app`, which returns 404. Point it to `https://mayank-jain-portfolio.vercel.app` (GitHub repo settings, About).
 
-## Carried into Step 3
+## Done in the redesign
 
-- [ ] Stats flagged `approx` render with "about" or "~".
-- [ ] Hero chips use the four headline stats (`featured` in `stats.js`) plus the hackathon wins count from `wins.js`.
-- [ ] Availability text comes from D1 in `site.config.js`.
+- [x] Hero, services with live demos, work tiles with case study sheets, highlights, experience, tech specs, contact.
+- [x] SEO meta, JSON-LD, favicon, OG image, robots, sitemap.
 
-## Later steps
+## Still open after the redesign
 
-- [ ] About copy (`about` in `site.config.js`) becomes a short line in the closing section. No full About section.
-- [ ] Case studies render `ProjectMedia`, `teamBuild`, `builtWith`, `links.devpost`, `links.marketplace`, and `links.githubMirror`.
+- [ ] Verify the Relay iframe embed on the deployed site (it could not be loaded from the build sandbox).
+- [ ] Run Lighthouse against the Vercel preview and fix anything under 90.
+- [ ] `public/og.png` is a simple generated card. Replace it with a designed one if wanted.
 
 ## Repo housekeeping (optional, ask first)
 

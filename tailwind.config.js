@@ -18,11 +18,14 @@ export default {
         },
         accent: {
           DEFAULT: channel("accent"),
+          fill: channel("accent-fill"),
           ink: channel("accent-ink"),
-          deep: channel("accent-deep"),
         },
         paper: channel("paper"),
-        ink: channel("ink"),
+        ink: {
+          DEFAULT: channel("ink"),
+          muted: channel("ink-muted"),
+        },
         hairline: {
           DEFAULT: "var(--color-hairline)",
           strong: "var(--color-hairline-strong)",
@@ -33,14 +36,14 @@ export default {
         mono: "var(--font-mono)",
       },
       fontSize: {
-        micro: ["var(--text-micro)", { lineHeight: "1.4", letterSpacing: "0.08em" }],
+        micro: ["var(--text-micro)", { lineHeight: "1.4" }],
         sm: ["var(--text-sm)", { lineHeight: "1.5" }],
-        base: ["var(--text-base)", { lineHeight: "1.6" }],
-        lead: ["var(--text-lead)", { lineHeight: "1.5", letterSpacing: "-0.01em" }],
-        title: ["var(--text-title)", { lineHeight: "1.15", letterSpacing: "-0.02em" }],
-        headline: ["var(--text-headline)", { lineHeight: "1.02", letterSpacing: "-0.035em" }],
-        display: ["var(--text-display)", { lineHeight: "0.95", letterSpacing: "-0.045em" }],
-        hero: ["var(--text-hero)", { lineHeight: "0.88", letterSpacing: "-0.055em" }],
+        base: ["var(--text-base)", { lineHeight: "1.55" }],
+        lead: ["var(--text-lead)", { lineHeight: "1.4", letterSpacing: "-0.012em" }],
+        title: ["var(--text-title)", { lineHeight: "1.12", letterSpacing: "-0.025em" }],
+        headline: ["var(--text-headline)", { lineHeight: "1.04", letterSpacing: "-0.035em" }],
+        display: ["var(--text-display)", { lineHeight: "1", letterSpacing: "-0.04em" }],
+        hero: ["var(--text-hero)", { lineHeight: "1.02", letterSpacing: "-0.04em" }],
       },
       spacing: {
         gutter: "var(--space-gutter)",
@@ -60,7 +63,6 @@ export default {
       boxShadow: {
         card: "var(--shadow-card)",
         float: "var(--shadow-float)",
-        accent: "var(--shadow-accent)",
       },
       transitionTimingFunction: {
         "out-expo": "var(--ease-out-expo)",
