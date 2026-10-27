@@ -47,16 +47,6 @@ export function Contact() {
                     <span className="transition-transform duration-150 group-hover:translate-x-0.5">→</span>
                   </a>
                 </li>
-                <li>
-                  <a
-                    href="tel:+14697684088"
-                    className="group text-accent-400 hover:text-accent-300 transition-colors duration-150 inline-flex items-center gap-1"
-                    aria-label="Call Mayank Jain"
-                  >
-                    <span className="group-hover:underline">(469) 768-4088</span>
-                    <span className="transition-transform duration-150 group-hover:translate-x-0.5">→</span>
-                  </a>
-                </li>
               </ul>
             </li>
 
