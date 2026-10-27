@@ -1,4 +1,4 @@
-import { services } from "../../data/site.config";
+import { services } from "../../data/services";
 import { RevealGroup, RevealItem } from "../fx/Reveal";
 import { Spotlight } from "../fx/Spotlight";
 import { SectionHeader } from "../ui/SectionHeader";

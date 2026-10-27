@@ -1,4 +1,4 @@
-import { experience } from "../../data/site.config";
+import { experience } from "../../data/experience";
 import { RevealGroup, RevealItem } from "../fx/Reveal";
 import { SectionHeader } from "../ui/SectionHeader";
 
@@ -11,15 +11,15 @@ export function Experience() {
           {experience.map((role) => (
             <RevealItem
               as="li"
-              key={role.company}
+              key={role.id}
               className="grid gap-2 border-b border-hairline py-6 sm:grid-cols-[14rem_1fr] sm:gap-8"
             >
               <span className="font-mono text-sm text-fg-subtle">
-                {role.start} to {role.end}
+                {role.period}
               </span>
               <span>
                 <span className="block text-lead font-medium text-fg">{role.company}</span>
-                <span className="block text-fg-muted">{role.title}</span>
+                <span className="block text-fg-muted">{role.role}</span>
               </span>
             </RevealItem>
           ))}

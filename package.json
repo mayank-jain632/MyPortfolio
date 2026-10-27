@@ -2,8 +2,11 @@
   "name": "mayank-portfolio",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
+    "check:data": "node scripts/check-data.mjs",
     "dev": "vite",
+    "prebuild": "npm run check:data",
     "build": "vite build",
     "preview": "vite preview"
   },

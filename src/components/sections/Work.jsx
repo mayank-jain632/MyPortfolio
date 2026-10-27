@@ -1,4 +1,4 @@
-import { featuredProjects } from "../../data/site.config";
+import { featuredProjects } from "../../data/projects";
 import { RevealGroup, RevealItem } from "../fx/Reveal";
 import { SectionHeader } from "../ui/SectionHeader";
 
