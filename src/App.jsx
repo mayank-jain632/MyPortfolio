@@ -1,28 +1,35 @@
-import React from "react";
-import { Navbar } from "./components/Navbar.jsx";
-import { Hero } from "./components/Hero.jsx";
-import { About } from "./components/About.jsx";
-import { Education } from "./components/Education.jsx";
-import { Experience } from "./components/Experience.jsx";
-import { Projects } from "./components/Projects.jsx";
-import { Contact } from "./components/Contact.jsx";
-import { Footer } from "./components/Footer.jsx";
+import { MotionConfig } from "motion/react";
+import { ScrollProgress } from "./components/fx/ScrollProgress";
+import { Contact } from "./components/sections/Contact";
+import { Experience } from "./components/sections/Experience";
+import { Hero } from "./components/sections/Hero";
+import { Proof } from "./components/sections/Proof";
+import { Services } from "./components/sections/Services";
+import { Work } from "./components/sections/Work";
+import { Footer } from "./components/shell/Footer";
+import { Navbar } from "./components/shell/Navbar";
 
-function App() {
+export default function App() {
   return (
-    <div className="relative min-h-screen bg-slate-950 text-slate-100">
+    // "user" makes every motion component honor prefers-reduced-motion.
+    <MotionConfig reducedMotion="user">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-pill focus:bg-accent focus:px-4 focus:py-2 focus:text-accent-ink"
+      >
+        Skip to content
+      </a>
+      <ScrollProgress />
       <Navbar />
-      <main>
+      <main id="main" tabIndex={-1} className="outline-none">
         <Hero />
-        <About />
-        <Education />
+        <Services />
+        <Work />
+        <Proof />
         <Experience />
-        <Projects />
         <Contact />
       </main>
       <Footer />
-    </div>
+    </MotionConfig>
   );
 }
-
-export default App;

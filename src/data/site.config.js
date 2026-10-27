@@ -26,32 +26,52 @@ export const decisions = {
 // ---------------------------------------------------------------------------
 export const site = {
   name: "Mayank Jain",
+  // Keep title and description in sync with index.html.
+  title: "Mayank Jain | Software engineer for trading automation and applied AI",
+  description:
+    "Trading automation, applied AI, and full-stack products. Independent engineer, UT Austin CS '28.",
   location: "Austin, TX",
   relocation: "Open to relocation",
-  // D7: GitHub profile URL is canonical. The repo points to
-  // my-portfolio-eight-azure-119agdlasi.vercel.app instead.
-  // TODO: confirm the canonical URL and update the GitHub repo "website" field to match.
-  canonicalUrl: "https://mayank-jain-portfolio.vercel.app",
   email: "07mayankjain@gmail.com",
-  github: "https://github.com/mayank-jain632",
-  linkedin: "https://www.linkedin.com/in/mayank-jain-016066293/",
-  // TODO: Mayank drops the final PDF at public/Mayank_Jain_Resume.pdf.
-  resumePath: "/Mayank_Jain_Resume.pdf",
+  availability: decisions.availability,
+  links: {
+    github: "https://github.com/mayank-jain632",
+    linkedin: "https://www.linkedin.com/in/mayank-jain-016066293/",
+    // TODO: the PDF in assets/ is an old resume (shows phone and GPA). Drop the
+    // current one at public/Mayank_Jain_Resume.pdf. Until then this link 404s.
+    resume: "/Mayank_Jain_Resume.pdf",
+    // D7: GitHub profile URL is canonical. The repo points to
+    // my-portfolio-eight-azure-119agdlasi.vercel.app instead.
+    // TODO: confirm the canonical URL and update the GitHub repo "website" field to match.
+    canonical: "https://mayank-jain-portfolio.vercel.app",
+  },
 };
 
+// In-page sections, in order. Drives the navbar and its active state.
+export const navigation = [
+  { id: "services", label: "Services" },
+  { id: "work", label: "Work" },
+  { id: "proof", label: "Proof" },
+  { id: "experience", label: "Experience" },
+  { id: "contact", label: "Contact" },
+];
+
 // ---------------------------------------------------------------------------
-// Hero (context section 1)
-// Alternative headlines kept for reference:
-//   "Automation that earns its keep."
-//   "From signal to execution in under a second."
+// Hero (context section 1). The first headline is the one shown.
 // ---------------------------------------------------------------------------
+export const headlines = [
+  "I build the systems that run while you sleep.",
+  "Automation that earns its keep.",
+  "From signal to execution in under a second.",
+];
+
 export const hero = {
   eyebrow: "Introducing Mayank Jain",
-  headline: "I build the systems that run while you sleep.",
+  headline: headlines[0],
   subhead:
     "Trading automation, applied AI, and full-stack products for people who would rather ship than babysit. Independent engineer, UT Austin CS '28.",
   primaryCta: { label: "Work with me", href: `mailto:${site.email}` },
-  secondaryCta: { label: "Download resume", href: site.resumePath },
+  secondaryCta: { label: "Download resume", href: site.links.resume },
 };
 
 // ---------------------------------------------------------------------------
@@ -101,11 +121,12 @@ export const services = [
 // ---------------------------------------------------------------------------
 // Headline proof numbers (context section 3)
 // ---------------------------------------------------------------------------
+// `count` animates with CountUp. `display` is shown as-is.
 export const proofStats = [
-  { value: "<1s", label: "signal execution, down from minutes" },
-  { value: "50", label: "clients served across about 20 daily signals" },
-  { value: "20+", label: "hours saved monthly on invoicing" },
-  { value: "3", label: "hackathon podiums in 2026" },
+  { display: "<1s", label: "signal execution, down from minutes" },
+  { count: 50, label: "clients served across about 20 daily signals" },
+  { count: 20, suffix: "+", label: "hours saved monthly on invoicing" },
+  { count: 3, label: "hackathon podiums in 2026" },
 ];
 
 // ---------------------------------------------------------------------------
@@ -347,7 +368,16 @@ export const education = {
   coursework: ["Data Structures and Algorithms", "Software Engineering", "Operating Systems (in progress)"],
 };
 
+// Credential URLs carried over from the old Education section.
 export const certifications = [
-  { name: "IBM Data Science Professional Certificate", year: "2025" },
-  { name: "Microsoft Python Development", year: "2026" },
+  {
+    name: "IBM Data Science Professional Certificate",
+    year: "2025",
+    url: "https://coursera.org/share/aa10bd6e44770dcc55e23e6ccb5c765d",
+  },
+  {
+    name: "Microsoft Python Development",
+    year: "2026",
+    url: "https://www.coursera.org/account/accomplishments/specialization/M1L7GEG8QAKO",
+  },
 ];
