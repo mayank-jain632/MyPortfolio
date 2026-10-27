@@ -2,87 +2,124 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Design tokens. See docs/DESIGN.md. Colors are OKLCH channels so Tailwind can apply alpha. */
 :root {
   color-scheme: dark;
+
+  /* Jet black canvas, neutral grey ramp (no color cast), one blue. */
+  --color-canvas: 0% 0 0;
+  --color-surface: 17.5% 0.002 286;
+  --color-raised: 23% 0.003 286;
+  --color-fg: 97.2% 0.002 286;
+  --color-fg-muted: 76% 0.004 286;
+  --color-fg-subtle: 64% 0.006 286;
+  --color-accent: 70% 0.165 247;
+  --color-accent-fill: 55% 0.19 256;
+  --color-accent-ink: 100% 0 0;
+  --color-paper: 97.2% 0.002 286;
+  --color-ink: 23% 0.003 286;
+  --color-ink-muted: 50% 0.006 286;
+  --color-hairline: oklch(100% 0 0 / 0.1);
+  --color-hairline-strong: oklch(100% 0 0 / 0.18);
+
+  /* Apple devices render the system face. Everywhere else gets Inter Tight. */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter Tight Variable", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+  --text-micro: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  --text-lead: clamp(1.1875rem, 1.05rem + 0.6vw, 1.5rem);
+  --text-title: clamp(1.5rem, 1.2rem + 1.4vw, 2.5rem);
+  --text-headline: clamp(2.25rem, 1.4rem + 3.6vw, 4.5rem);
+  --text-display: clamp(2.75rem, 1.4rem + 6vw, 6.5rem);
+  --text-hero: clamp(2.5rem, 1rem + 6.4vw, 5.75rem);
+
+  --space-gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
+  --space-section: clamp(5rem, 3rem + 8vw, 11rem);
+  --nav-height: 3rem;
+  --nav-offset: 4rem;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  --shadow-card: inset 0 1px 0 0 oklch(100% 0 0 / 0.05);
+  --shadow-float: 0 20px 60px -20px oklch(0% 0 0 / 0.8);
+  --shadow-accent: none;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 500ms;
+  --duration-reveal: 900ms;
 }
 
-body {
-  @apply font-body bg-slate-950 text-slate-100;
-}
-
-.glass-panel {
-  @apply bg-slate-900/60 border border-slate-700/60 backdrop-blur-xl;
-  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
-}
-
-.glass-panel:hover {
-  @apply border-accent-500/40;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-  transform: translateY(-2px);
-}
-
-.section-shell {
-  @apply max-w-6xl mx-auto px-4 sm:px-6 md:px-8;
-}
-
-.tag-pill {
-  @apply inline-flex items-center rounded-full border border-slate-600/60 bg-slate-900/70 px-2.5 py-1 text-[0.7rem] font-medium text-slate-200 gap-1;
-  transition: border-color 150ms ease, background-color 150ms ease;
-}
-
-.tag-pill:hover {
-  @apply border-accent-500/60 bg-accent-500/10;
-}
-
-.tag-dot {
-  @apply h-1.5 w-1.5 rounded-full bg-emerald-400;
-}
-
-/* Fade in on load — the one animation kept for a bit of character */
-.fade-in {
-  animation: fadeInUp 0.7s ease-out both;
-}
-
-.fade-in-delayed {
-  animation: fadeInUp 0.7s ease-out 0.15s both;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 12px, 0);
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    background: #000;
   }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-canvas font-sans text-base text-fg-muted antialiased;
+    overflow-x: clip;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  section[id] {
+    scroll-margin-top: var(--nav-offset);
+  }
+
+  :focus-visible {
+    outline: 2px solid oklch(var(--color-accent));
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  ::selection {
+    background: oklch(var(--color-accent-fill));
+    color: #fff;
   }
 }
 
-.stagger-animation > * {
-  animation: fadeInUp 0.5s ease-out both;
-}
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-content px-gutter;
+  }
 
-.stagger-animation > *:nth-child(1) { animation-delay: 0.05s; }
-.stagger-animation > *:nth-child(2) { animation-delay: 0.1s; }
-.stagger-animation > *:nth-child(3) { animation-delay: 0.15s; }
-.stagger-animation > *:nth-child(4) { animation-delay: 0.2s; }
-.stagger-animation > *:nth-child(5) { animation-delay: 0.25s; }
-.stagger-animation > *:nth-child(6) { animation-delay: 0.3s; }
+  /* Light section for rhythm: the only non-black surface. */
+  .surface-light {
+    @apply bg-paper text-ink;
+    color-scheme: light;
+    --color-fg: 23% 0.003 286;
+    --color-fg-muted: 40% 0.005 286;
+    --color-fg-subtle: 50% 0.006 286;
+    --color-accent: 50% 0.19 256;
+    --color-raised: 93% 0.002 286;
+    --color-hairline: oklch(0% 0 0 / 0.14);
+    --color-hairline-strong: oklch(0% 0 0 / 0.28);
+  }
 
-/* Subtle, fast hover lift for cards */
-.hover-lift {
-  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
-}
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
 
-.hover-lift:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .fade-in,
-  .fade-in-delayed,
-  .stagger-animation > * {
-    animation: none;
+  /* Hide scrollbars on horizontal rails. */
+  .rail {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .rail::-webkit-scrollbar {
+    display: none;
   }
 }

@@ -2,17 +2,19 @@
   "name": "mayank-portfolio",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
+    "check:data": "node scripts/check-data.mjs",
     "dev": "vite",
+    "prebuild": "npm run check:data",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource-variable/inter-tight": "^5.3.0",
     "motion": "^12.23.24",
     "react": "^18.3.1",
-    "react-bits": "^1.0.5",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.30.2"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.1.0",

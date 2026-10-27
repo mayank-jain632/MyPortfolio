@@ -1,147 +1,281 @@
+// Projects and case studies, from hub/PORTFOLIO_CONTEXT.md section 5.
+// Repo, live, and Marketplace links verified on 2026-10-27 (GitHub API, HTTP and framing headers).
+// Dropped per context: Quant Research Notebooks, Pooled, Shark Radar. Not shown: constellation_2.0.
+// No archive of minor repos. Earlier work lives in experience.js without repo links.
+// A featured project without `links.github` needs `noRepo` (why) or a `todo` (enforced by scripts/check-data.mjs).
+// Media files live in public/media/<slug>/ and are referenced by root-relative path ("/media/<slug>/x.webp").
+
+import { decisions } from "./site.config.js";
+
+const GITHUB = "https://github.com/mayank-jain632";
+
+/** @typedef {"signal-pipeline" | "invoice" | "agent-tree" | "shelf-vision" | "none"} DemoType */
+/** @typedef {"hackathon" | "shipped" | "in-progress" | "client-work"} Status */
+
+/**
+ * @typedef {object} Links
+ * @property {string} github main public repo, or ""
+ * @property {string} live public URL, or ""
+ * @property {string} [githubMirror] secondary public copy of the repo
+ * @property {string} [devpost]
+ * @property {string} [marketplace]
+ */
+
+/**
+ * @typedef {object} Media
+ * @property {{ provider: "youtube" | "vimeo", id: string, title: string }} [video] loads only on click
+ * @property {string} [poster] root-relative image shown on the video facade
+ * @property {{ src: string, alt: string }[]} [images] root-relative paths under /media/<slug>/
+ * @property {string} [liveEmbed] https URL, only if it allows framing and shows no private data
+ */
+
+/**
+ * @typedef {object} Project
+ * @property {string} slug
+ * @property {string} name
+ * @property {string} tagline
+ * @property {string} [award]
+ * @property {string} year
+ * @property {string} role
+ * @property {Status} status
+ * @property {boolean} featured
+ * @property {string} category matches a service id in services.js
+ * @property {string} problem
+ * @property {string[]} build
+ * @property {string[]} result
+ * @property {string[]} stack
+ * @property {string[]} [teamBuild] team work shown under "Built with the team", never as mine
+ * @property {string[]} [builtWith] teammates credited as "Built with"
+ * @property {Links} links
+ * @property {Media} [media] each block renders only when present
+ * @property {string} [noRepo] why there is no public repo (client or employer code)
+ * @property {DemoType} demoType
+ * @property {number} order
+ * @property {boolean} [anonymous] client work, never name the client
+ * @property {string} [note] design or copy constraint
+ * @property {string} [todo]
+ */
+
+/** @type {Project[]} */
 export const projects = [
   {
-    name: "Clarity",
+    slug: "aws-agentic-ai",
+    name: "AWS Agentic AI Hackathon",
+    tagline: "Recursive multi-agent fund research, built in 6 hours.",
+    award: "2nd Place",
+    year: "2026",
+    role: "Owned the walk-forward backtesting layer",
+    status: "hackathon",
+    featured: true,
+    category: "applied-ai",
+    problem: "Fund research needs many parallel lines of inquiry, and no strategy should reach a paper trade without proof.",
+    build: [
+      "Recursive multi-agent research platform where agents spawn sub-agents under a configurable cap.",
+      "Fund workspace with mandate, dashboard, and recursive agent canvas (React/Vite, FastAPI, Dexter's agent loop).",
+      "All agents on AWS Bedrock, deployed on EC2, CloudFront, ECR, and Secrets Manager behind IAM roles.",
+      "Walk-forward backtesting layer: every strategy gated on blind PASS/FAIL replays before any paper trade (Alpaca).",
+    ],
+    result: ["2nd place, AWS Agentic AI Hackathon.", "Built in 6 hours."],
+    stack: ["React", "Vite", "FastAPI", "AWS Bedrock", "EC2", "CloudFront", "ECR", "Secrets Manager", "IAM", "Alpaca"],
+    // The CloudFront URL in the README (dgvmahl7u2clq.cloudfront.net) no longer resolves, so no live link.
+    links: { github: `${GITHUB}/aws-ai-hackathon`, live: "" },
+    demoType: "agent-tree",
+    order: 1,
+  },
+  {
+    slug: "crescent-signal-platform",
+    name: "Signal execution platform",
+    tagline: "TradingView alerts to broker orders in under a second.",
+    award: "Client work",
+    year: "2025 to Present",
+    role: "Founder and engineer, Crescent Dynamics",
+    status: "client-work",
+    featured: true,
+    category: "trading-automation",
+    problem: "Signals were delivered by hand, taking minutes to reach clients.",
+    build: [
+      "TradingView-to-IBKR signal deployment service.",
+      "Webhook-to-broker pipeline with signal filtering and risk gating, running as systemd services.",
+    ],
+    result: [
+      "Signal execution went from minutes to under 1 second.",
+      "Delivered to 50 clients across about 20 daily signals.",
+    ],
+    stack: ["Python", "systemd", "TradingView", "IBKR"],
+    links: { github: "", live: "" },
+    demoType: "signal-pipeline",
+    order: 2,
+    anonymous: true,
+    noRepo: "Client work. The client stays anonymous and the code is not public.",
+  },
+  {
     slug: "clarity",
-    highlight: "A dementia patient assistant app with an on-device AI pipeline.",
-    description:
-      "Built the full backend and AI pipeline for a dementia patient assistant app, including a custom-trained YOLOv11 model for face and medication recognition and Gemini Flash for conversational voice interaction, served via FastAPI. Architected a private Tailscale mesh network between the iPhone client and local inference backend, keeping patient data off public cloud infrastructure with sub-100ms local latency.",
-    impact:
-      "Won Best Use of Supabase at Hook 'Em Hacks 2026 (200+ participants).",
-    tech: ["FastAPI", "YOLOv11", "Gemini", "Supabase", "Expo", "Next.js", "Tailscale"],
+    name: "Clarity",
+    tagline: "A caregiver-facing assistant for dementia care that keeps patient data off public cloud.",
+    award: "1st Place, Supabase x Gemini Track",
+    year: "2026",
+    role: "Built the backend and AI pipeline",
+    builtWith: ["Krishna Perla", "Harshal Dhaduk", "RJ Paidi"],
+    status: "hackathon",
+    featured: true,
+    category: "applied-ai",
+    problem: "Dementia caregivers need real-time visibility without sending patient data to public cloud.",
+    build: [
+      "Custom YOLOv11 recognition model.",
+      "Gemini voice, served through FastAPI, with Supabase and a Next.js caregiver view.",
+      "Tailscale mesh between the iPhone and a local backend keeps patient data off public cloud.",
+      "GPS geofencing and real-time caregiver visibility.",
+    ],
+    result: ["1st place, Supabase x Gemini Track.", "Sub-100ms latency over the private mesh."],
+    stack: ["YOLOv11", "Gemini", "FastAPI", "Supabase", "Next.js", "Tailscale"],
+    // Devpost lists bruhlol108/SimpleClarity, which returns 404. The public team repo is
+    // rjp123456/SimpleClarity ("Clarity Lite, HookEm Hacks 2026"), which includes Mayank's commits.
     links: {
-      github: ""
+      github: "https://github.com/rjp123456/SimpleClarity",
+      live: "",
+      devpost: "https://devpost.com/software/clarity-lxbwpt",
     },
-    category: "AI & ML"
+    demoType: "none",
+    order: 3,
   },
   {
-    name: "Relay",
+    slug: "myst",
+    name: "Myst",
+    tagline: "A hands-free Ray-Ban Meta companion for people with early-stage memory loss.",
+    award: "2nd Place, HackTX Meta Track",
+    year: "2026",
+    role: "UI, live transcription, and memory, in a team of 4",
+    builtWith: ["Krishna Perla", "Harshal Dhaduk", "RJ Paidi"],
+    status: "hackathon",
+    featured: true,
+    category: "applied-ai",
+    problem: "People with early-stage memory loss need help recognizing family and recalling conversations, without reaching for a phone.",
+    // TODO: Mayank's stated role is "entire UI, live transcription, memory features". Commit history
+    // backs live transcription fully and the UI and memory work in part (see docs/TODO.md). Copy below
+    // stays within what the history shows until Mayank confirms.
+    build: [
+      "I built the Android UI for reminders in Kotlin and worked on the home and family enrollment screens.",
+      "I built live transcription: glasses audio streams to Muse in real time and comes back as a conversation recap.",
+      "I worked on the memory features, the household records and visit memory that bring back who visited.",
+    ],
+    // TODO: Android Keystore and the face recognition work are attributed to the team until Mayank confirms which parts were his.
+    teamBuild: [
+      "Our team's app uses Meta Wearables DAT on Android.",
+      "Consent-gated, revocable face recognition that only names enrolled family and declines to guess on strangers.",
+      "API key secured with Android Keystore.",
+    ],
+    result: [
+      "2nd place, HackTX Meta Track.",
+      "Our team's app correctly recognized enrolled family across about 30 live trials.",
+    ],
+    stack: ["Kotlin", "Android", "Meta Wearables DAT", "Muse Spark", "Android Keystore"],
+    // harshaldhaduk/myst is where the team worked (created 2026-10-24, 61 commits).
+    // mayank-jain632/Myst is a later copy of the same history (created 2026-10-27, 60 commits).
+    links: {
+      github: "https://github.com/harshaldhaduk/myst",
+      githubMirror: `${GITHUB}/Myst`,
+      live: "",
+      devpost: "https://devpost.com/software/myst-78dz52",
+    },
+    demoType: "none",
+    order: 4,
+    note: "No photos of real people. Abstract or illustrated visuals only.",
+  },
+  {
+    slug: "crescent-invoicing",
+    name: "Invoice automation tool",
+    tagline: "An Excel-like tool that replaced industrial invoicing software.",
+    award: "Client work",
+    year: "2025 to Present",
+    role: "Founder and engineer, Crescent Dynamics",
+    status: "client-work",
+    featured: true,
+    category: "workflow-automation",
+    problem: "Invoicing ran through expensive industrial software and took too long per client.",
+    build: ["Excel-like invoice automation tool that replaced the industrial software."],
+    result: [
+      "Invoice turnaround cut to about 15 minutes per client.",
+      "100+ invoices a month, saving 20+ hours monthly.",
+    ],
+    stack: ["Python", "React", "Supabase"],
+    links: { github: "", live: "" },
+    demoType: "invoice",
+    order: 5,
+    anonymous: true,
+    noRepo: "Client work. The client stays anonymous and the code is not public.",
+  },
+  {
+    slug: "family-dollar-shelf-vision",
+    name: "Store shelf vision",
+    tagline: "Store cameras that flag empty shelves for human review.",
+    award: "Family Dollar via Convergent Forge",
+    year: "2026",
+    role: "Software Engineer",
+    status: "in-progress",
+    featured: true,
+    category: "applied-ai",
+    problem: "Empty shelves go unnoticed between store walks.",
+    build: [
+      "Gemini vision prototype on Orchid VMS store cameras, flagging empty shelves for human review.",
+      "Vertex AI, ADK, Cloud Run, and BigQuery pipeline, built in a 15-person team.",
+    ],
+    result: ["Running across 3+ stores."],
+    stack: ["Gemini", "Vertex AI", "Google ADK", "Cloud Run", "BigQuery"],
+    links: { github: "", live: "" },
+    demoType: "shelf-vision",
+    order: 6,
+    noRepo: "Employer code, not public.",
+  },
+  {
     slug: "relay",
-    highlight: "A VS Code extension that bridges Slack and IDE tasks.",
-    description:
-      "Built and published a Visual Studio Code extension to the official Marketplace, converting Slack messages into assignable developer tasks via a REST API, PostgreSQL task store, and Next.js project management dashboard. Implemented a /nudge Slack command for direct task assignment with file-path targeting; deployed backend on Railway with a Vercel-hosted frontend dashboard.",
-    impact:
-      "Streamlines the handoff between team chat and IDE-level task tracking for developer teams.",
-    tech: ["Node.js", "Next.js", "PostgreSQL", "Slack API", "GitHub OAuth"],
+    name: "Relay",
+    tagline: "Slack messages become assignable tasks inside VS Code.",
+    year: "2025 to Present",
+    role: "Built and published the extension",
+    status: "shipped",
+    featured: true,
+    category: "full-stack",
+    problem: "Tasks discussed in Slack get lost before they reach the editor.",
+    build: [
+      "Published VS Code extension that turns Slack messages into assignable tasks.",
+      "REST API, PostgreSQL, and a Next.js PM dashboard with GitHub OAuth.",
+      "A /nudge command for direct assignment. Railway backend, Vercel frontend.",
+    ],
+    result: ["Cut task context-switching about 30 to 35% (resume claim)."],
+    stack: ["VS Code API", "Node.js", "PostgreSQL", "Next.js", "GitHub OAuth", "Railway", "Vercel"],
+    // Repo homepage relay-six-indol.vercel.app redirects (307) here. Public landing page with sample
+    // data only, no X-Frame-Options or CSP frame-ancestors, so it can be embedded.
     links: {
-      github: ""
+      github: `${GITHUB}/Relay`,
+      live: "https://relay-space.vercel.app",
+      marketplace: "https://marketplace.visualstudio.com/items?itemName=Relay.relay-tasks",
     },
-    category: "Automation"
+    media: { liveEmbed: "https://relay-space.vercel.app" },
+    demoType: "none",
+    order: 7,
   },
   {
-    name: "From‑Scratch ML Series",
-    slug: "from-scratch-ml",
-    highlight: "Core ML algorithms implemented from first principles.",
-    description:
-      "A series of Colab notebooks implementing K‑Means, Linear Regression, and a basic Neural Network from scratch — including gradient descent and backpropagation — to demystify how models actually learn.",
-    impact:
-      "Deepened my intuition for optimization, loss landscapes, and the trade‑offs between expressiveness and stability in simple models.",
-    tech: ["Python", "NumPy", "Jupyter"],
-    links: {
-      github: "https://github.com/mayank-jain632/K-Means"
-    },
-    category: "Foundations"
+    // D6: shown as a small "In progress" card. Repo last pushed 2026-10-15, so not dormant.
+    // No launch or announcement copy. Mayank will post about it separately.
+    slug: "blindspot",
+    name: "Blindspot",
+    tagline: "VS Code extension that shows which parts of your codebase you've never actually looked at.",
+    year: "2026",
+    role: "Solo project",
+    status: "in-progress",
+    featured: decisions.showBlindspot,
+    category: "full-stack",
+    problem: "",
+    build: [],
+    result: [],
+    stack: [],
+    links: { github: `${GITHUB}/Blindspot`, live: "" },
+    demoType: "none",
+    order: 8,
   },
-  {
-    name: "Indian Paper Trading App",
-    slug: "indian-paper-trading-app",
-    highlight: "A live‑data stock & futures simulator for Indian markets.",
-    description:
-      "A full‑stack paper trading platform that connects to real‑time NSE data, displays TradingView‑like charts, and tracks a virtual portfolio so strategies can be tested without real capital.",
-    impact:
-      "Gives new traders a realistic sandbox to validate ideas and understand risk, while enabling rapid iteration on my own systematic strategies.",
-    tech: ["TypeScript", "React", "Node.js", "WebSockets"],
-    links: {
-      github: "https://github.com/mayank-jain632/indianPaperTradingApp"
-    },
-    category: "Fintech & Quant"
-  },
-  {
-    name: "CARAML Labs — Data‑Efficient AI Framework",
-    slug: "caraml-labs",
-    highlight: "Research framework for deep learning with minimal labeled data.",
-    description:
-      "A research codebase exploring how conditional GANs and LSTM‑based convolutional autoencoders can be combined with active learning to train robust models when labeled data is scarce.",
-    impact:
-      "Clarified best‑practices for synthetic data generation and anomaly detection while giving me hands‑on experience with research‑grade experimentation.",
-    tech: ["Python", "PyTorch", "GANs", "Autoencoders"],
-    links: {
-      github: "https://github.com/mayank-jain632/CARAML_Labs_Research_Project"
-    },
-    category: "AI & ML"
-  },
-  {
-    name: "Oil A New Web Platform",
-    slug: "oil-a-new",
-    highlight: "Full‑stack platform for a sustainability‑focused nonprofit.",
-    description:
-      "A responsive web experience for a 501(c)(3) that turns waste cooking oil into handcrafted candles. Includes donor‑facing storytelling pages, internal operations views, and basic analytics.",
-    impact:
-      "Enabled our small team to coordinate collections, production, and sales digitally, scaling impact far beyond what manual tracking could support.",
-    tech: ["HTML", "CSS", "JavaScript"],
-    links: {
-      github: "https://github.com/mayank-jain632/Oil-A-New-Website"
-    },
-    category: "Web & Product"
-  },
-  {
-    name: "Pooled — Group Payments App",
-    slug: "pooled",
-    highlight: "A mobile‑first app to pool money with friends for shared goals.",
-    description:
-      "A React Native + Firebase app where users can create 'pools' for trips, dinners, or shared subscriptions, invite friends, and transparently track contributions.",
-    impact:
-      "Turned the pain point of splitting costs into a clean product, while forcing careful thinking around authentication, security, and payment flows.",
-    tech: ["React Native", "Firebase", "Figma"],
-    links: {
-      github: "",
-      external: ""
-    },
-    category: "Product & UX"
-  },
-  {
-    name: "Swift Bot Internal Tools",
-    slug: "swift-bot",
-    highlight: "Automation tools for a niche recruiting agency.",
-    description:
-      "Internal dashboards and scripts to streamline sourcing, ranking, and contacting strong Java developer candidates for partner companies.",
-    impact:
-      "Reduced manual work and response time, letting a small team punch above its weight while keeping process quality high.",
-    tech: ["Python", "APIs", "Automation"],
-    links: {},
-    category: "Automation"
-  },
-  {
-    name: "Quant Research Notebooks",
-    slug: "quant-notebooks",
-    highlight: "Explorations in options, micro‑futures, and systematic trading.",
-    description:
-      "Experimental notebooks that pull historical data, compute greeks and risk metrics, and prototype rules for intraday and swing strategies.",
-    impact:
-      "Provide a playground for testing ideas before promoting them into production‑grade backtesting code.",
-    tech: ["Python", "Pandas", "Matplotlib"],
-    links: {},
-    category: "Fintech & Quant"
-  },
-  {
-    name: "Dorm Decor 3D Planner (Concept)",
-    slug: "dorm-decor",
-    highlight: "Interactive 3D dorm designer connected to real products.",
-    description:
-      "A web app concept built with Three.js where students can lay out furniture in a 3D model of their dorm room, then buy the exact items via affiliate links.",
-    impact:
-      "Combines 3D experience design, commerce, and real‑world constraints — a sandbox for experimenting with product sense and technical execution.",
-    tech: ["Three.js", "React", "Supabase"],
-    links: {},
-    category: "Product & UX"
-  }
 ];
 
-export const projectCategories = [
-  "All",
-  "AI & ML",
-  "Fintech & Quant",
-  "Web & Product",
-  "Product & UX",
-  "Automation",
-  "Foundations"
-];
+/** Featured projects in display order. */
+export const featuredProjects = projects
+  .filter((project) => project.featured)
+  .sort((a, b) => a.order - b.order);

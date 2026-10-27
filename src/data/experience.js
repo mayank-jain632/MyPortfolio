@@ -1,82 +1,124 @@
-export const experiences = [
-  {
-    company: "Dell Technologies",
-    title: "Dell STEM Aspire Program Participant",
+// Experience, from hub/PORTFOLIO_CONTEXT.md section 4. Newest first. Rendered as a changelog.
+// Dropped per context: Swift Bot Technologies.
+import { decisions } from "./site.config.js";
+
+const PRESENT = "Present";
+
+/**
+ * @typedef {object} Role
+ * @property {string} id
+ * @property {string} company
+ * @property {string} [via] staffing or program partner
+ * @property {string} role
+ * @property {string} location
+ * @property {string} start
+ * @property {string} end
+ * @property {string} period display string, "start to end"
+ * @property {boolean} current
+ * @property {string[]} bullets
+ * @property {string[]} stack
+ */
+
+/** @returns {Role} */
+function role({ start, end, ...rest }) {
+  return { ...rest, start, end, period: `${start} to ${end}`, current: end === PRESENT };
+}
+
+/** @type {Role[]} */
+export const experience = [
+  role({
+    id: "family-dollar",
+    company: "Family Dollar",
+    via: "Convergent Forge",
+    role: "Software Engineer",
     location: "Austin, TX",
-    period: "August 2026 – Present",
+    start: "September 2026",
+    end: PRESENT,
     bullets: [
-      "Selected as 1 of 58 students for a four-month program focused on STEM career readiness, including 1:1 mentorship with Dell technology professionals and hands-on industry workshops.",
-      "Engaged in personalized 1:1 mentorship and career coaching with technology professionals, gaining insight into industry pathways, professional skills, and workplace success."
+      "Prototyping Gemini vision on Orchid VMS store cameras across 3+ stores, flagging empty shelves for human review.",
+      "Building a Vertex AI, ADK, Cloud Run, BigQuery pipeline in a 15-person team, flagging unverified payment terminals.",
     ],
-    tags: ["Mentorship", "STEM", "Career Development"]
-  },
-  {
+    stack: ["Gemini", "Vertex AI", "Google ADK", "Cloud Run", "BigQuery"],
+  }),
+  role({
+    id: "dell-stem-aspire",
+    company: "Dell STEM Aspire Program",
+    role: "Program Participant",
+    location: "Austin, TX",
+    start: "August 2026",
+    end: PRESENT,
+    bullets: ["Selected as 1 of 58 students for a four-month program with 1:1 Dell mentorship."],
+    stack: [],
+  }),
+  role({
+    id: "crescent",
     company: "Crescent Dynamics LLC",
-    title: "Software Engineer | Automation Engineer",
+    role: "Founder and Software Engineer",
     location: "Remote",
-    period: "December 2025 – Present",
+    start: "December 2025",
+    // D3: company shown as current; client case studies stay past tense.
+    end: decisions.crescentEnd,
     bullets: [
-      "Architected and deployed a multi-tenant signal delivery platform serving roughly 200 subscribers, including a webhook-to-broker execution pipeline with REST ingestion and configurable filtering logic, processing roughly 20 events daily across multiple instruments.",
-      "Built a client invoicing tool for a consulting firm using a Python backend, React frontend, and Supabase, taking manually pasted client and billing data and generating structured, correctly formatted invoices as PDFs with optional formatted email delivery."
+      "Runs an independent venture deploying systemd-based trading automation and client tooling.",
+      "Cut signal execution from minutes to under 1 second, automating delivery to 50 clients across about 20 daily signals.",
+      "Cut invoice turnaround to about 15 minutes per client, saving 20+ hours monthly across 100+ invoices.",
     ],
-    tags: ["Python", "React", "Supabase", "Automation", "REST APIs"]
-  },
-  {
-    company: "AvaWatz",
-    title: "Machine Learning | Computer Vision Intern",
-    location: "Remote",
-    period: "September 2024 – December 2025",
-    bullets: [
-      "Built and evaluated computer vision pipelines for real-world video security applications spanning video classification, multi-object tracking, and facial recognition in cloud-deployed inference environments.",
-      "Owned dataset engineering end to end, including collection, cleaning, augmentation, and structured evaluation, improving model robustness across distribution-shifted deployment scenarios."
-    ],
-    tags: ["Computer Vision", "Deep Learning", "Python", "PyTorch"]
-  },
-  {
+    stack: ["Python", "systemd", "TradingView", "IBKR", "React", "Supabase"],
+  }),
+  role({
+    id: "trading-desk",
     company: "Proprietary Options Trading Desk",
-    title: "Software Engineer",
+    role: "Software Engineer",
     location: "Frisco, TX",
-    period: "June 2024 – Present",
+    start: "June 2024",
+    // D2: follows the resume. Flip decisions.tradingDeskEnd to "Present" if still active.
+    end: decisions.tradingDeskEnd,
+    // Public-safe wording only. No performance figures.
     bullets: [
-      "Designed and built pre-execution trading infrastructure in Python, including signal generation, risk management, and position sizing logic supporting 4-5 concurrent systematic strategies in production.",
-      "Integrated implied and realized volatility signals as conditional entry filters within signal logic, gating trade execution across multi-ticker options data based on live volatility conditions.",
-      "Maintained and extended a shared production codebase across live strategy iterations, coordinating changes with a senior developer in a version-controlled workflow."
+      "Built pre-execution trading infrastructure in Python, gating entries on volatility signals for 4 to 5 live strategies.",
+      "Owns Atlas, a momentum/futures trading platform, including the execution infrastructure behind it.",
     ],
-    tags: ["Python", "Options", "Trading Systems", "Risk Management"]
-  },
-  {
-    company: "Swift Bot Technologies",
-    title: "Backend Developer",
-    location: "McKinney, TX",
-    period: "May 2024 – Present",
+    stack: ["Python"],
+  }),
+  role({
+    id: "avawatz",
+    company: "AvaWatz",
+    role: "Machine Learning and Computer Vision Intern",
+    location: "Remote",
+    start: "September 2024",
+    end: "December 2025",
     bullets: [
-      "Bootstrapped a technical recruiting venture specializing in Java developers, building internal tools to streamline sourcing and screening.",
-      "Automated candidate matching workflows with lightweight ML and scripting, helping generate meaningful revenue while staying lean."
+      "Built and evaluated computer vision pipelines for video security: classification, tracking, facial recognition.",
+      "Benchmarked the SlowFast dual-stream architecture, analyzing latency and accuracy tradeoffs.",
+      "Owned dataset engineering end to end, building a 3,000+ image training set.",
     ],
-    tags: ["Entrepreneurship", "Automation", "Recruiting Tech"]
-  },
-  {
+    stack: ["Python", "PyTorch"],
+  }),
+];
+
+// Collapsed by default.
+/** @type {Role[]} */
+export const earlierExperience = [
+  role({
+    id: "caraml",
     company: "CARAML Lab, UT Dallas",
-    title: "Artificial Intelligence Research Intern",
+    role: "AI Research Intern",
     location: "Richardson, TX",
-    period: "May 2024 – July 2024",
+    start: "May 2024",
+    end: "July 2024",
     bullets: [
-      "Developed an AI framework for training deep learning models with minimal labeled data using conditional GANs for synthetic generation.",
-      "Implemented an LSTM‑based convolutional autoencoder for anomaly detection, focusing on robust feature learning from noisy signals.",
-      "Ran ablation studies and experiments, documenting findings to guide future active learning and data‑efficient modeling work."
+      "Conditional GANs for synthetic data, LSTM convolutional autoencoder for anomaly detection, ablation studies.",
     ],
-    tags: ["Research", "GANs", "Autoencoders", "Data‑Efficient ML"]
-  },
-  {
-    company: "Oil A New — 501(c)(3) Nonprofit",
-    title: "Co‑Founder & CTO",
+    stack: ["Python", "PyTorch"],
+  }),
+  role({
+    id: "oil-a-new",
+    company: "Oil A New (501(c)(3))",
+    role: "Co-Founder and CTO",
     location: "McKinney, TX",
-    period: "March 2024 – August 2025",
-    bullets: [
-      "Co‑founded a nonprofit that recycles used cooking oil into eco‑friendly candles to reduce carbon emissions and water pollution.",
-      "Designed and developed the full‑stack web platform to coordinate oil collection, candle inventory, and customer orders.",
-      "Built backend workflows to track donations, logistics, and impact metrics, enabling transparent storytelling for donors and partners."
-    ],
-    tags: ["Full‑Stack", "Nonprofit", "Node.js", "Product"]
-  },
+    start: "March 2024",
+    end: "August 2025",
+    bullets: ["Full-stack platform coordinating used-oil collection, candle inventory, and orders."],
+    stack: [],
+  }),
 ];
