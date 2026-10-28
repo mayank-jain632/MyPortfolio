@@ -3,12 +3,12 @@ import { decisions } from "./site.config.js";
 
 export const education = {
   school: "The University of Texas at Austin",
-  // D4: math double major unconfirmed.
   degree: decisions.showMathMajor ? "B.S. Computer Science and Mathematics" : "B.S. Computer Science",
+  standing: "Junior",
+  gpa: "3.73",
   graduation: "May 2028",
   location: "Austin, TX",
   coursework: ["Data Structures and Algorithms", "Software Engineering", "Operating Systems (in progress)"],
-  // D5: GPA omitted from the public site. There is deliberately no GPA field.
 };
 
 // Credential URLs carried over from the old Education section.

@@ -34,7 +34,7 @@ export function Specs() {
           <Row label="Education">
             <p className="text-fg">{education.degree}</p>
             <p>
-              {education.school}, {education.location}. {education.graduation}.
+              {education.school}, {education.location}. {education.standing}, graduating {education.graduation}. GPA {education.gpa}.
             </p>
             <p className="mt-2">Coursework: {education.coursework.join(", ")}.</p>
           </Row>
