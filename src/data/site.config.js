@@ -65,7 +65,7 @@ export const hasResume = typeof __HAS_RESUME__ !== "undefined" && __HAS_RESUME__
 // Hero and about copy (context section 1). The first headline is the one shown.
 // ---------------------------------------------------------------------------
 export const headlines = [
-  "Built real systems. Won hackathons. Still in school.",
+  "Learns fast. Ships faster.",
   "Backend systems by day. Hackathon podiums by weekend.",
   "Fast with Python, faster with a deadline.",
 ];

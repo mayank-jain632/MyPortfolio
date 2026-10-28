@@ -22,7 +22,7 @@ Running list across steps. Updated at the end of each step. Last update: redesig
 
 - [ ] Verify the Relay iframe embed on the deployed site (it could not be loaded from the build sandbox).
 - [ ] Run Lighthouse against the Vercel preview and fix anything under 90.
-- [ ] `public/og.png` is a simple generated card. Replace it with a designed one if wanted.
+- [ ] `public/og-card.png` is a simple generated card. Replace it with a designed one if wanted.
 
 ## Repo housekeeping (optional, ask first)
 
