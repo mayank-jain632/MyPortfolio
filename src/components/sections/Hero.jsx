@@ -7,10 +7,10 @@ import { ButtonLink, TextLink } from "../ui/Button";
 
 // At a glance: the basics a recruiter looks for first.
 const glance = [
-  { label: "School", value: "UT Austin" },
-  { label: "Degree", value: "B.S. Computer Science and Mathematics" },
-  { label: "Standing", value: `${education.standing}, class of 2028` },
-  { label: "GPA", value: education.gpa },
+  { value: "UT Austin", label: "School" },
+  { value: "CS and Math", label: "B.S. degree" },
+  { value: "Class of 2028", label: education.standing },
+  { value: education.gpa, label: "GPA" },
 ];
 
 export function Hero() {
@@ -65,9 +65,9 @@ export function Hero() {
 
       <RevealGroup as="dl" stagger={0.1} className="container-page grid grid-cols-2 gap-x-6 gap-y-10 pb-6 pt-20 sm:pt-28 lg:grid-cols-4">
         {glance.map((item) => (
-          <RevealItem key={item.label} className="flex flex-col border-t border-hairline pt-5">
+          <RevealItem key={item.label} className="flex flex-col items-center border-t border-hairline pt-5 text-center">
             <dt className="order-2 mt-2 text-sm text-fg-subtle">{item.label}</dt>
-            <dd className="order-1 text-lead font-semibold text-fg sm:text-title">{item.value}</dd>
+            <dd className="order-1 whitespace-nowrap text-lead font-semibold text-fg sm:text-title">{item.value}</dd>
           </RevealItem>
         ))}
       </RevealGroup>
