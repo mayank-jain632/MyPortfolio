@@ -99,8 +99,16 @@ export function Proof() {
         <RailButton direction="next" onClick={() => scrollRail(1)} />
       </div>
 
-      <div className="container-page mt-section">
-        <Reveal as="h3" className="max-w-[20ch] text-title font-semibold text-fg">
+    </section>
+  );
+}
+
+/** Closing numbers, placed near the bottom of the page. */
+export function Numbers() {
+  return (
+    <section aria-labelledby="numbers-title" className="py-section">
+      <div className="container-page">
+        <Reveal as="h2" id="numbers-title" className="max-w-[20ch] text-title font-semibold text-fg">
           By the numbers.
         </Reveal>
         <RevealGroup as="dl" className="mt-10 grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-3">

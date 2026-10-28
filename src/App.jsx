@@ -3,7 +3,7 @@ import { ScrollProgress } from "./components/fx/ScrollProgress";
 import { Contact } from "./components/sections/Contact";
 import { Experience } from "./components/sections/Experience";
 import { Hero } from "./components/sections/Hero";
-import { Proof } from "./components/sections/Proof";
+import { Numbers, Proof } from "./components/sections/Proof";
 import { Specs } from "./components/sections/Specs";
 import { Services } from "./components/sections/Services";
 import { Work } from "./components/sections/Work";
@@ -29,6 +29,7 @@ export default function App() {
         <Work />
         <Services />
         <Specs />
+        <Numbers />
         <Contact />
       </main>
       <Footer />
