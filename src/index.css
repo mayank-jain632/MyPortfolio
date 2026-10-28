@@ -92,6 +92,12 @@
   }
 }
 
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 @layer components {
   .container-page {
     @apply mx-auto w-full max-w-content px-gutter;
@@ -112,6 +118,16 @@
 
   .tabular {
     font-variant-numeric: tabular-nums;
+  }
+
+  /* Terminal caret. Static under reduced motion. */
+  .caret {
+    animation: caret-blink 1.1s steps(1) infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .caret {
+      animation: none;
+    }
   }
 
   /* Hide scrollbars on horizontal rails. */
