@@ -13,9 +13,9 @@
   --color-fg: 97.2% 0.002 286;
   --color-fg-muted: 76% 0.004 286;
   --color-fg-subtle: 64% 0.006 286;
-  --color-accent: 70% 0.165 247;
-  --color-accent-fill: 55% 0.19 256;
-  --color-accent-ink: 100% 0 0;
+  --color-accent: 80% 0.2 150;
+  --color-accent-fill: 80% 0.2 150;
+  --color-accent-ink: 14% 0.03 150;
   --color-paper: 97.2% 0.002 286;
   --color-ink: 23% 0.003 286;
   --color-ink-muted: 50% 0.006 286;
@@ -88,7 +88,7 @@
 
   ::selection {
     background: oklch(var(--color-accent-fill));
-    color: #fff;
+    color: oklch(var(--color-accent-ink));
   }
 }
 
@@ -104,7 +104,7 @@
     --color-fg: 23% 0.003 286;
     --color-fg-muted: 40% 0.005 286;
     --color-fg-subtle: 50% 0.006 286;
-    --color-accent: 50% 0.19 256;
+    --color-accent: 45% 0.15 150;
     --color-raised: 93% 0.002 286;
     --color-hairline: oklch(0% 0 0 / 0.14);
     --color-hairline-strong: oklch(0% 0 0 / 0.28);

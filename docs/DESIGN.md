@@ -1,6 +1,6 @@
 # Design System
 
-Direction: an Apple-style product page where the product is the engineer. Jet black canvas, neutral greys, one blue, big two-tone headlines, rounded tiles, one light "Tech specs" section for rhythm. No grain or light leaks.
+Direction: an Apple-style product page where the product is the engineer. Jet black canvas, neutral greys, one signal green, big two-tone headlines, rounded tiles, one light "Tech specs" section for rhythm. No grain or light leaks.
 
 Tokens live in `src/index.css` (`:root`) and are mapped in `tailwind.config.js`. Never hardcode a color, radius, shadow, or easing in a component.
 
@@ -16,11 +16,11 @@ Tokens live in `src/index.css` (`:root`) and are mapped in `tailwind.config.js`.
 | `fg-subtle` | `64% 0.006 286` | Labels, meta, grey half of headlines |
 | `hairline` | white at 10% | Default 1px border |
 | `hairline-strong` | white at 18% | Hover and focus borders |
-| `accent` | `70% 0.165 247` | Links and text accents on black |
-| `accent-fill` | `55% 0.19 256` | Button backgrounds (white text passes contrast) |
+| `accent` | `80% 0.2 150` | Signal green: links, the primary button, the hero glow |
+| `accent-fill` | `80% 0.2 150` | Button backgrounds (dark `accent-ink` text on top) |
 | `paper` / `ink` | `97.2% 0.002 286` / `23% 0.003 286` | Light section only (`.surface-light`) |
 
-Accent rules: blue marks links, the primary button, and the focus ring. No decorative fills.
+Accent rules: green marks links, the primary button, and the focus ring. No decorative fills.
 
 ## Typography
 
@@ -80,7 +80,6 @@ Principles:
 
 - Nav is a 48px bar with a blurred layer on a separate absolutely positioned element. Do not put `backdrop-filter` on the header itself: it becomes the containing block for the fixed mobile menu.
 - Services use a sticky demo beside the copy. Work is a bento grid with a full-screen case study sheet.
-- The hero chip tilts with the cursor and is static under reduced motion.
 
 ## Focus and states
 

@@ -36,7 +36,7 @@ export default function AgentTree() {
             max={MAX_CAP}
             value={effectiveCap}
             onChange={(event) => setCap(Number(event.target.value))}
-            className="mt-2 block w-48 accent-[oklch(70%_0.165_247)]"
+            className="mt-2 block w-48 accent-[oklch(80%_0.2_150)]"
           />
         </label>
         <div className="flex gap-2">
@@ -61,7 +61,7 @@ export default function AgentTree() {
             <motion.path
               key={`edge-${node.index}`}
               d={`M${parent.x} ${parent.y + 16} C${parent.x} ${(parent.y + node.y) / 2} ${node.x} ${(parent.y + node.y) / 2} ${node.x} ${node.y - 16}`}
-              stroke="oklch(70% 0.165 247)"
+              stroke="oklch(80% 0.2 150)"
               strokeOpacity="0.6"
               strokeWidth="1.5"
               fill="none"
@@ -79,7 +79,7 @@ export default function AgentTree() {
             transition={{ duration: 0.45, ease: EASE.outExpo, delay: node.index === 0 ? 0 : 0.2 }}
             style={{ transformOrigin: `${node.x}px ${node.y}px` }}
           >
-            <circle cx={node.x} cy={node.y} r="16" fill={node.index === 0 ? "oklch(55% 0.19 256)" : "oklch(23% 0.003 286)"} stroke="oklch(100% 0 0 / 0.18)" />
+            <circle cx={node.x} cy={node.y} r="16" fill={node.index === 0 ? "oklch(80% 0.2 150)" : "oklch(23% 0.003 286)"} stroke="oklch(100% 0 0 / 0.18)" />
             <text x={node.x} y={node.y + 4} textAnchor="middle" fontSize="11" fontWeight="600" fill="#fff">
               {node.index === 0 ? "R" : node.index}
             </text>

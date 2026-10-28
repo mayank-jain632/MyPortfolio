@@ -17,7 +17,7 @@ npm run preview  # serve the build
 - `docs/DESIGN.md`: palette, type, spacing, motion tokens. Implemented in `src/index.css` and mapped in `tailwind.config.js`.
 - `docs/AUDIT.md`: what was wrong with the previous version. `docs/TODO.md`: open items.
 - `src/components/sections/`: Hero, Services, Work, Proof (highlights), Experience, Specs, Contact.
-- `src/components/demos/`: interactive demos (signal pipeline, invoice, agent tree, shelf vision), lazy loaded when near the viewport.
+- `src/components/demos/`: interactive demos (signal pipeline, invoice, agent tree, shelf vision), collapsed by default and loaded when opened.
 - `src/components/work/`: case study sheet, opened by hash route `#work/<slug>`.
 - `src/components/fx/`: motion helpers. All respect `prefers-reduced-motion`.
 - `scripts/check-data.mjs`: build-time content rules (private data, copy rules, media validation).

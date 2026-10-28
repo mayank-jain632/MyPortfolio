@@ -94,7 +94,7 @@ export default function SignalPipeline() {
               >
                 <div
                   className={`flex size-11 items-center justify-center rounded-pill border text-sm font-semibold transition-colors duration-base ${
-                    isReached ? "border-accent-fill bg-accent-fill text-white" : "border-hairline-strong bg-surface text-fg-subtle"
+                    isReached ? "border-accent-fill bg-accent-fill text-accent-ink" : "border-hairline-strong bg-surface text-fg-subtle"
                   }`}
                 >
                   {index + 1}

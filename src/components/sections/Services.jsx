@@ -8,7 +8,7 @@ import { Demo } from "../demos/Demo";
 import { Segmented } from "../demos/DemoFrame";
 import { Reveal } from "../fx/Reveal";
 import { ProjectMedia } from "../media/ProjectMedia";
-import { TextLink } from "../ui/Button";
+import { Button, TextLink } from "../ui/Button";
 import { SectionHeader } from "../ui/SectionHeader";
 
 const relay = projects.find((project) => project.slug === "relay");
@@ -46,52 +46,72 @@ function ServiceVisual({ service }) {
   }
 }
 
+const TOGGLE_LABEL = {
+  "trading-automation": "signal-to-order demo",
+  "workflow-automation": "invoice demo",
+  "applied-ai": "vision and agent demos",
+  "full-stack": "live Relay embed",
+};
+
 function Service({ service }) {
+  const [open, setOpen] = useState(false);
   const stats = service.statIds.map(getStat).filter(Boolean);
   const firstProject = featuredProjects.find((project) => service.projectSlugs.includes(project.slug));
+  const panelId = `demo-${service.id}`;
 
   return (
-    <article aria-labelledby={`service-${service.id}`} className="grid items-start gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
-      <div>
-        <Reveal as="h3" id={`service-${service.id}`} className="text-title font-semibold text-fg">
-          {service.name}
-        </Reveal>
-        <Reveal as="p" delay={0.08} className="mt-4 text-lead text-fg-muted">
-          {service.promise}
-        </Reveal>
-
-        <Reveal as="dl" delay={0.14} className="mt-9 grid grid-cols-3 gap-4 border-t border-hairline pt-6">
-          {stats.map((stat) => (
-            <div key={stat.id} className="flex flex-col">
-              <dt className="order-2 mt-1.5 text-micro text-fg-subtle">{stat.label}</dt>
-              <dd className="order-1 whitespace-nowrap text-title font-semibold text-fg">
-                <StatValue stat={stat} />
-              </dd>
-            </div>
-          ))}
-        </Reveal>
-
-        <Reveal as="ul" delay={0.2} className="mt-8 space-y-3 text-base text-fg-muted">
-          {service.proof.map((line) => (
-            <li key={line} className="flex gap-3">
-              <span aria-hidden="true" className="mt-[0.7em] size-1 shrink-0 rounded-pill bg-fg-subtle" />
-              {line}
-            </li>
-          ))}
-        </Reveal>
-
-        {firstProject && (
-          <Reveal delay={0.26} className="mt-8">
-            <TextLink href={caseStudyHref(firstProject.slug)} className="text-lead">
-              Read the case study
-            </TextLink>
+    <article aria-labelledby={`service-${service.id}`} className="border-t border-hairline py-10 sm:py-14">
+      <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+        <div>
+          <Reveal as="h3" id={`service-${service.id}`} className="text-title font-semibold text-fg">
+            {service.name}
           </Reveal>
-        )}
+          <Reveal as="p" delay={0.08} className="mt-3 text-lead text-fg-muted">
+            {service.promise}
+          </Reveal>
+          <Reveal as="dl" delay={0.14} className="mt-7 grid grid-cols-3 gap-4">
+            {stats.map((stat) => (
+              <div key={stat.id} className="flex flex-col">
+                <dt className="order-2 mt-1.5 text-micro text-fg-subtle">{stat.label}</dt>
+                <dd className="order-1 whitespace-nowrap text-title font-semibold text-fg">
+                  <StatValue stat={stat} />
+                </dd>
+              </div>
+            ))}
+          </Reveal>
+        </div>
+
+        <div>
+          <Reveal as="ul" delay={0.12} className="space-y-3 text-base text-fg-muted">
+            {service.proof.map((line) => (
+              <li key={line} className="flex gap-3">
+                <span aria-hidden="true" className="mt-[0.7em] size-1 shrink-0 rounded-pill bg-fg-subtle" />
+                {line}
+              </li>
+            ))}
+          </Reveal>
+          <Reveal delay={0.18} className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <Button
+              variant="ghost"
+              size="sm"
+              aria-expanded={open}
+              aria-controls={panelId}
+              onClick={() => setOpen((value) => !value)}
+            >
+              {open ? "Hide" : "Try the"} {TOGGLE_LABEL[service.id]}
+            </Button>
+            {firstProject && (
+              <TextLink href={caseStudyHref(firstProject.slug)}>Read the case study</TextLink>
+            )}
+          </Reveal>
+        </div>
       </div>
 
-      <Reveal delay={0.1} className="lg:sticky lg:top-24">
-        <ServiceVisual service={service} />
-      </Reveal>
+      {open && (
+        <div id={panelId} className="mx-auto mt-10 max-w-3xl">
+          <ServiceVisual service={service} />
+        </div>
+      )}
     </article>
   );
 }
@@ -102,10 +122,10 @@ export function Services() {
       <div className="container-page">
         <SectionHeader
           headingId="services-title"
-          title="Four things I build."
-          rest="Each one has a demo you can try."
+          title="Where I go deep."
+          rest="Open a demo to see how it works."
         />
-        <div className="space-y-section">
+        <div className="border-b border-hairline">
           {services.map((service) => (
             <Service key={service.id} service={service} />
           ))}

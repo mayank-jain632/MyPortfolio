@@ -4,7 +4,7 @@ const BASE =
   "active:scale-[0.98]";
 
 const VARIANTS = {
-  primary: "bg-accent-fill text-accent-ink hover:bg-[oklch(50%_0.19_256)]",
+  primary: "bg-accent-fill text-accent-ink hover:bg-[oklch(85%_0.2_150)]",
   light: "bg-fg text-ink hover:bg-fg/85",
   ghost: "border border-hairline-strong text-fg hover:bg-fg/10",
 };

@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { about, hero, site } from "../../data/site.config";
+import { about, hasResume, hero, site } from "../../data/site.config";
 import { Reveal } from "../fx/Reveal";
 import { SplitText } from "../fx/SplitText";
 import { Button, ButtonLink, TextLink } from "../ui/Button";
 
-const SERVICES_LINE =
-  "I take on trading and execution automation, business workflow automation, applied AI and computer vision, and full-stack builds.";
+const CONTACT_LINE =
+  "Happy to talk about roles, my projects, or how any of it was built. Email is the fastest way to reach me.";
 
 function CopyEmail() {
   const [state, setState] = useState("idle");
@@ -49,11 +49,11 @@ export function Contact() {
   return (
     <section id="contact" aria-labelledby="contact-title" className="py-section">
       <div className="container-page flex flex-col items-center text-center">
-        <h2 id="contact-title" className="max-w-[16ch] text-display font-semibold text-fg">
-          <SplitText text="Tell me what should run on its own." stagger={0.07} />
+        <h2 id="contact-title" className="max-w-[12ch] text-display font-semibold text-fg">
+          <SplitText text="Let's talk." stagger={0.07} />
         </h2>
         <Reveal delay={0.2} className="flex flex-col items-center">
-          <p className="mt-8 max-w-[36rem] text-balance text-lead text-fg-muted">{SERVICES_LINE}</p>
+          <p className="mt-8 max-w-[36rem] text-balance text-lead text-fg-muted">{CONTACT_LINE}</p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <ButtonLink href={hero.primaryCta.href} size="lg">
               {hero.primaryCta.label}
@@ -67,6 +67,11 @@ export function Contact() {
             <TextLink href={site.links.linkedin} external>
               LinkedIn
             </TextLink>
+            {hasResume && (
+              <TextLink href={site.links.resume} download>
+                Resume
+              </TextLink>
+            )}
           </p>
         </Reveal>
 

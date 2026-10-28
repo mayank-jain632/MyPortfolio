@@ -8,15 +8,15 @@
 // ---------------------------------------------------------------------------
 export const decisions = {
   // D1: availability badge text. Do not name an internship employer.
-  availability: "Open to select projects",
+  availability: "Open to opportunities",
   // D2: trading desk end date. Resume says August 2026. Set to "Present" to flip.
   tradingDeskEnd: "August 2026",
   // D3: Crescent shown as "Present", but case studies stay past tense with no active-client claims.
   crescentEnd: "Present",
   // D4: math double major is unconfirmed. Set true once confirmed.
-  showMathMajor: false,
+  showMathMajor: true,
   // D5: GPA omitted from the public site.
-  showGpa: false,
+  showGpa: true,
   // D6: Blindspot shown as a small "In progress" card. Set false if the repo goes dormant.
   showBlindspot: true,
   // D8: Truvo and Capital One are not on the resume and stay omitted.
@@ -30,7 +30,7 @@ export const site = {
   // Keep title and description in sync with index.html.
   title: "Mayank Jain | Software engineer for trading automation and applied AI",
   description:
-    "Trading automation, applied AI, and full-stack products. Independent engineer, UT Austin CS '28.",
+    "Software engineer building trading infrastructure, applied AI, and full-stack products. Computer science and math at UT Austin.",
   location: "Austin, TX",
   relocation: "Open to relocation",
   email: "07mayankjain@gmail.com",
@@ -49,10 +49,10 @@ export const site = {
 
 // In-page sections, in order. Drives the navbar and its active state.
 export const navigation = [
-  { id: "services", label: "Services" },
-  { id: "work", label: "Work" },
   { id: "proof", label: "Highlights" },
   { id: "experience", label: "Experience" },
+  { id: "work", label: "Work" },
+  { id: "services", label: "Demos" },
   { id: "specs", label: "Tech specs" },
   { id: "contact", label: "Contact" },
 ];
@@ -65,24 +65,24 @@ export const hasResume = typeof __HAS_RESUME__ !== "undefined" && __HAS_RESUME__
 // Hero and about copy (context section 1). The first headline is the one shown.
 // ---------------------------------------------------------------------------
 export const headlines = [
-  "I build the systems that run while you sleep.",
-  "Automation that earns its keep.",
-  "From signal to execution in under a second.",
+  "Built trading systems. Won hackathons. Still in school.",
+  "Trading infrastructure by day. Hackathon podiums by weekend.",
+  "Fast with Python, faster with a deadline.",
 ];
 
 export const hero = {
-  eyebrow: "Introducing",
+  eyebrow: "Software engineer",
   headline: headlines[0],
   subhead:
-    "Trading automation, applied AI, and full-stack products for people who would rather ship than babysit. Independent engineer, UT Austin CS '28.",
-  primaryCta: { label: "Work with me", href: `mailto:${site.email}` },
+    "I build trading infrastructure, applied AI, and full-stack products. Computer science and math at UT Austin.",
+  primaryCta: { label: "Email me", href: `mailto:${site.email}` },
   secondaryCta: { label: "Download resume", href: site.links.resume },
 };
 
 export const about = {
   summary: "Software engineer first. Trading automation and applied AI are where I go deepest.",
   details: [
-    "CS at UT Austin, graduating May 2028.",
+    "Computer science and math at UT Austin, graduating May 2028.",
     "Independent engineering work through Crescent Dynamics LLC.",
     `Based in ${site.location}. ${site.relocation}.`,
   ],

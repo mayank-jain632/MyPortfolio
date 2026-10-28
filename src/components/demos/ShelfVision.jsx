@@ -42,7 +42,7 @@ function Shelf({ shelf, isScanned, isScanning, onScan }) {
           {isScanned ? (
             <span className={`flex items-center gap-2 ${needsReview ? "text-fg" : "text-fg-muted"}`}>
               <span className="tabular">{percent}% full</span>
-              {needsReview && <span className="rounded-pill bg-accent-fill px-2.5 py-0.5 text-micro font-medium text-white">Needs review</span>}
+              {needsReview && <span className="rounded-pill bg-accent-fill px-2.5 py-0.5 text-micro font-medium text-accent-ink">Needs review</span>}
             </span>
           ) : (
             <span className="text-fg-subtle">{isScanning ? "Scanning" : "Press to scan"}</span>
@@ -51,7 +51,7 @@ function Shelf({ shelf, isScanned, isScanning, onScan }) {
 
         {isScanned && (
           <svg aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none" className="pointer-events-none absolute inset-0 size-full">
-            <polygon points="1,10 99,3 99,97 1,90" fill="none" stroke="oklch(70% 0.165 247)" strokeWidth="1.5" strokeDasharray="4 3" vectorEffect="non-scaling-stroke" />
+            <polygon points="1,10 99,3 99,97 1,90" fill="none" stroke="oklch(80% 0.2 150)" strokeWidth="1.5" strokeDasharray="4 3" vectorEffect="non-scaling-stroke" />
           </svg>
         )}
         {isScanning && (
