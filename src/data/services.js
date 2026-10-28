@@ -14,28 +14,6 @@
 /** @type {Service[]} */
 export const services = [
   {
-    id: "trading-automation",
-    name: "Trading and execution automation",
-    promise: "Webhook-to-broker pipelines with signal filtering, risk gating, and walk-forward backtesting.",
-    proof: [
-      "Cut signal execution from minutes to under 1 second, delivering to 50 clients across about 20 daily signals (Crescent).",
-      "Pre-execution infrastructure gating entries on volatility signals across 4 to 5 live strategies (trading desk).",
-      "Walk-forward backtesting layer gating every strategy on blind PASS/FAIL replays (AWS hackathon).",
-    ],
-    statIds: ["signal-latency", "signal-clients", "live-strategies"],
-    projectSlugs: ["crescent-signal-platform", "aws-agentic-ai"],
-  },
-  {
-    id: "workflow-automation",
-    name: "Business workflow automation",
-    promise: "Internal tools that replace expensive software or manual spreadsheets.",
-    proof: [
-      "Invoice turnaround cut to about 15 minutes per client, 100+ invoices a month, saving 20+ hours monthly (Crescent).",
-    ],
-    statIds: ["invoice-turnaround", "invoices-monthly", "hours-saved"],
-    projectSlugs: ["crescent-invoicing"],
-  },
-  {
     id: "applied-ai",
     name: "Applied AI and computer vision",
     promise: "Vision pipelines, multi-agent systems, and custom-trained models.",
@@ -58,5 +36,27 @@ export const services = [
     ],
     statIds: ["hackathon-podiums"],
     projectSlugs: ["relay", "blindspot", "myst"],
+  },
+  {
+    id: "trading-automation",
+    name: "Trading and execution automation",
+    promise: "Webhook-to-broker pipelines with signal filtering, risk gating, and walk-forward backtesting.",
+    proof: [
+      "Cut signal execution from minutes to under 1 second, delivering to 50 clients across about 20 daily signals (Crescent).",
+      "Pre-execution infrastructure gating entries on volatility signals across 4 to 5 live strategies (trading desk).",
+      "Walk-forward backtesting layer gating every strategy on blind PASS/FAIL replays (AWS hackathon).",
+    ],
+    statIds: ["signal-latency", "signal-clients", "live-strategies"],
+    projectSlugs: ["crescent-signal-platform", "aws-agentic-ai"],
+  },
+  {
+    id: "workflow-automation",
+    name: "Business workflow automation",
+    promise: "Internal tools that replace expensive software or manual spreadsheets.",
+    proof: [
+      "Invoice turnaround cut to about 15 minutes per client, 100+ invoices a month, saving 20+ hours monthly (Crescent).",
+    ],
+    statIds: ["invoice-turnaround", "invoices-monthly", "hours-saved"],
+    projectSlugs: ["crescent-invoicing"],
   },
 ];

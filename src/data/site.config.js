@@ -28,9 +28,9 @@ export const decisions = {
 export const site = {
   name: "Mayank Jain",
   // Keep title and description in sync with index.html.
-  title: "Mayank Jain | Software engineer for trading automation and applied AI",
+  title: "Mayank Jain | Software engineer",
   description:
-    "Software engineer building trading infrastructure, applied AI, and full-stack products. Computer science and math at UT Austin.",
+    "Software engineer building applied AI, trading infrastructure, and full-stack products. Computer science and math at UT Austin.",
   location: "Austin, TX",
   relocation: "Open to relocation",
   email: "07mayankjain@gmail.com",
@@ -65,8 +65,8 @@ export const hasResume = typeof __HAS_RESUME__ !== "undefined" && __HAS_RESUME__
 // Hero and about copy (context section 1). The first headline is the one shown.
 // ---------------------------------------------------------------------------
 export const headlines = [
-  "Built trading systems. Won hackathons. Still in school.",
-  "Trading infrastructure by day. Hackathon podiums by weekend.",
+  "Built real systems. Won hackathons. Still in school.",
+  "Backend systems by day. Hackathon podiums by weekend.",
   "Fast with Python, faster with a deadline.",
 ];
 
@@ -74,13 +74,13 @@ export const hero = {
   eyebrow: "Software engineer",
   headline: headlines[0],
   subhead:
-    "I build trading infrastructure, applied AI, and full-stack products. Computer science and math at UT Austin.",
+    "I build software across applied AI, trading infrastructure, and full-stack products. Computer science and math at UT Austin.",
   primaryCta: { label: "Email me", href: `mailto:${site.email}` },
   secondaryCta: { label: "Download resume", href: site.links.resume },
 };
 
 export const about = {
-  summary: "Software engineer first. Trading automation and applied AI are where I go deepest.",
+  summary: "Software engineer first. Applied AI, full-stack products, and trading infrastructure are where I go deepest.",
   details: [
     "Computer science and math at UT Austin, graduating May 2028.",
     "Independent engineering work through Crescent Dynamics LLC.",
